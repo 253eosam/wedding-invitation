@@ -7,9 +7,9 @@ export default function Home() {
 
   return (
     <div className="h-dvh flex flex-col gap-y-4 justify-center items-center">
-      <p> {count} </p>
+      <p> ❤️ {count} </p>
       <button className="border p-4 rounded-md hover:bg-gray-600 hover:text-white" onClick={() => setCount((pre) => pre + 1)}>
-        add button
+        하트를 눌러주세요..❤️
       </button>
     </div>
   )
