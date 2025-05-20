@@ -1,19 +1,14 @@
 "use client";
 
-import { useState } from "react";
-
 export default function Home() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="h-dvh flex flex-col gap-y-4 justify-center items-center">
-      <p> ❤️ {count} </p>
-      <button
-        className="border p-4 rounded-md hover:bg-gray-600 hover:text-white"
-        onClick={() => setCount((pre) => pre + 1)}
-      >
-        하트를 눌러주세요..❤️
-      </button>
+    <div className="flex flex-col gap-y-15">
+      <section>Main</section>
+      <section>Intro</section>
+      <section>Gallery</section>
+      <section>Calendar</section>
+      <section>Map</section>
+      <section>Account</section>
     </div>
   );
 }
