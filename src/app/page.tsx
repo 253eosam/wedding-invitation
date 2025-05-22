@@ -11,10 +11,6 @@ export default function Home() {
     <div className="flex flex-col gap-y-15">
       <MainSection />
       <IntroSection />
-      <GallerySection />
-      <CalendarSection />
-      <MapSection />
-      <AccountSection />
     </div>
   );
 }

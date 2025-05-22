@@ -4,3 +4,8 @@
   --font-crimson: var(--font-crimson-pro);
   --font-gowun: var(--font-gowun-dodum);
 }
+
+body{
+  -webkit-text-stroke-color: inherit;
+  -webkit-text-stroke-width: 0.2px;
+}
