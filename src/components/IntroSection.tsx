@@ -1,11 +1,4 @@
-import {
-  contents,
-  groom,
-  groomParents,
-  bride,
-  brideParents,
-  contacts,
-} from "@/assets/DB.json";
+import { names, contents, contacts } from "@/assets/DB.json";
 
 export default function IntroSection() {
   return (
@@ -24,10 +17,10 @@ export default function IntroSection() {
       </div>
       <div>
         <p>
-          {groomParents.dad} {groomParents.mom}의 장남 {groom}
+          {names.groom.dad} {names.groom.mom}의 장남 {names.groom.me}
         </p>
         <p>
-          {brideParents.dad} {brideParents.mom}의 차녀 {bride}
+          {names.bride.dad} {names.bride.mom}의 차녀 {names.bride.me}
         </p>
       </div>
       <button>연락하기</button>
@@ -39,8 +32,13 @@ export default function IntroSection() {
         </h2>
         <div>
           <p>
-            신랑측<p>GROOM</p>
+            신랑측<span>GROOM</span>
           </p>
+          <ul>
+            {Object.values(contacts.groom).map((contact) => (
+              <li key={contact}>{contact}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
