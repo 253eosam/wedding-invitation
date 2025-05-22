@@ -23,6 +23,7 @@ const flatCompat = [
     },
     rules: {
       "prettier/prettier": "error",
+      "@next/next/no-img-element": "off",
     },
   },
 ];
