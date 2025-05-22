@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Crimson_Pro } from "next/font/google";
 import "@/app/globals.css";
 import { title, description } from "@/assets/DB.json";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const CrimsonPro = Crimson_Pro({
+  variable: "--font-crimson-pro",
   subsets: ["latin"],
 });
 
@@ -26,9 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#efefef]`}
-      >
+      <body className={` ${CrimsonPro.variable} antialiased bg-[#efefef]`}>
         <main className="w-[425px] bg-[#fafafa] mx-auto" role="main">
           {children}
         </main>
