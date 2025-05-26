@@ -1,11 +1,16 @@
 import { names, contents, contacts } from '@/assets/DB.json'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import FullScreenDialog from '@/components/FullDialog'
 import { IoIosCall } from 'react-icons/io'
 import { IoIosMail } from 'react-icons/io'
 
 export default function IntroSection() {
   const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    if (open) document.body.classList.add('overflow-hidden')
+    else document.body.classList.remove('overflow-hidden')
+  }, [open])
 
   return (
     <section className="flex flex-col items-center my-10">
@@ -102,6 +107,58 @@ export default function IntroSection() {
                     <IoIosCall size={20} />
                   </a>
                   <a href={`sms:${contacts.groom.mom}`}>
+                    <IoIosMail size={20} />
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div className="mt-15 font-gowun text-sm">
+            <p className="border-b-1 border-dotted border-gray-400 pb-2.5 w-[300] text-start">
+              신부측
+              <span className="text-[#999] text-xs align-bottom ml-1 tracking-[3px]">
+                BRIDE
+              </span>
+            </p>
+            <ul>
+              <li className="my-5 flex">
+                <p className="flex-1/3 text-start ">신부</p>
+                <p className="flex-1/3 text-[15px] text-white">
+                  {names.bride.me}
+                </p>
+                <div className="flex-1/3 flex justify-end gap-x-5">
+                  <a href={`tel:${contacts.bride.me}`}>
+                    <IoIosCall size={20} />
+                  </a>
+                  <a href={`sms:${contacts.bride.me}`}>
+                    <IoIosMail size={20} />
+                  </a>
+                </div>
+              </li>
+              <li className="my-5 flex">
+                <p className="flex-1/3 text-start ">신부 아버지</p>
+                <p className="flex-1/3 text-[15px] text-white">
+                  {names.bride.dad}
+                </p>
+                <div className="flex-1/3 flex justify-end gap-x-5">
+                  <a href={`tel:${contacts.bride.dad}`}>
+                    <IoIosCall size={20} />
+                  </a>
+                  <a href={`sms:${contacts.bride.dad}`}>
+                    <IoIosMail size={20} />
+                  </a>
+                </div>
+              </li>
+              <li className="my-5 flex">
+                <p className="flex-1/3 text-start ">신부 어머니</p>
+                <p className="flex-1/3 text-[15px] text-white">
+                  {names.bride.mom}
+                </p>
+                <div className="flex-1/3 flex justify-end gap-x-5">
+                  <a href={`tel:${contacts.bride.mom}`}>
+                    <IoIosCall size={20} />
+                  </a>
+                  <a href={`sms:${contacts.bride.mom}`}>
                     <IoIosMail size={20} />
                   </a>
                 </div>

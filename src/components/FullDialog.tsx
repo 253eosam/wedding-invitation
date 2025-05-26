@@ -21,7 +21,7 @@ export default function FullScreenDialog({
     >
       <div className="relative w-full h-full backdrop-blur-sm">
         <button
-          className="absolute top-4 right-4 text-white w-11 h-11 text-2xl"
+          className="absolute top-4 right-4 text-[#ccc] w-11 h-11 text-2xl"
           onClick={onClose}
           aria-label="닫기"
         >
