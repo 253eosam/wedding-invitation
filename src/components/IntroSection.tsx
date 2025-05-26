@@ -1,9 +1,9 @@
-import { names, contents } from "@/assets/DB.json";
-import { useState } from "react";
-import FullScreenDialog from "@/components/FullDialog";
+import { names, contents } from '@/assets/DB.json'
+import { useState } from 'react'
+import FullScreenDialog from '@/components/FullDialog'
 
 export default function IntroSection() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   return (
     <section className="flex flex-col items-center my-10">
@@ -65,5 +65,5 @@ export default function IntroSection() {
         </div>
       </div> */}
     </section>
-  );
+  )
 }

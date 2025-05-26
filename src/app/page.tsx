@@ -1,6 +1,6 @@
-"use client";
-import MainSection from "@/components/MainSection";
-import IntroSection from "@/components/IntroSection";
+'use client'
+import MainSection from '@/components/MainSection'
+import IntroSection from '@/components/IntroSection'
 
 export default function Home() {
   return (
@@ -8,5 +8,5 @@ export default function Home() {
       <MainSection />
       <IntroSection />
     </div>
-  );
+  )
 }

@@ -1,3 +1,3 @@
 export default function MapSection() {
-  return <div>map</div>;
+  return <div>map</div>
 }
