@@ -1,13 +1,13 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
-const isProd = process.env.NODE_ENV === "production"; // build 시점
+const isProd = process.env.NODE_ENV === 'production' // build 시점
 
 const nextConfig: NextConfig = {
-  output: "export",
+  output: 'export',
   ...(isProd && {
-    basePath: "/wedding-invitation",
-    assetPrefix: "/wedding-invitation/",
+    basePath: '/wedding-invitation',
+    assetPrefix: '/wedding-invitation/',
   }),
-};
+}
 
-export default nextConfig;
+export default nextConfig

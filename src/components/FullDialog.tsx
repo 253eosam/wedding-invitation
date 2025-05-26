@@ -15,11 +15,11 @@ export default function FullScreenDialog({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#382C30D6]"
       role="dialog"
       aria-modal="true"
     >
-      <div className="relative w-full h-full bg-[rgba(56, 44, 48, .84)] p-4 backdrop-blur-sm">
+      <div className="relative w-full h-full backdrop-blur-sm">
         <button
           className="absolute top-4 right-4 text-white w-11 h-11 text-2xl"
           onClick={onClose}
