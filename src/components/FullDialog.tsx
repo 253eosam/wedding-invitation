@@ -1,17 +1,17 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 
 type FullScreenDialogProps = {
-  isOpen: boolean;
-  onClose: () => void;
-  children: ReactNode;
-};
+  isOpen: boolean
+  onClose: () => void
+  children: ReactNode
+}
 
 export default function FullScreenDialog({
   isOpen,
   onClose,
   children,
 }: FullScreenDialogProps) {
-  if (!isOpen) return null;
+  if (!isOpen) return null
 
   return (
     <div
@@ -31,5 +31,5 @@ export default function FullScreenDialog({
         {children}
       </div>
     </div>
-  );
+  )
 }

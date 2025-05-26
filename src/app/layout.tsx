@@ -1,29 +1,29 @@
-import type { Metadata } from "next";
-import { Crimson_Pro, Gowun_Dodum } from "next/font/google";
-import "@/app/globals.css";
-import { title, description } from "@/assets/DB.json";
+import type { Metadata } from 'next'
+import { Crimson_Pro, Gowun_Dodum } from 'next/font/google'
+import '@/app/globals.css'
+import { title, description } from '@/assets/DB.json'
 
 const CrimsonPro = Crimson_Pro({
-  variable: "--font-crimson-pro",
-  subsets: ["latin"],
-});
+  variable: '--font-crimson-pro',
+  subsets: ['latin'],
+})
 
 const GowunDodum = Gowun_Dodum({
-  variable: "--font-gowun-dodum",
-  subsets: ["latin"],
-  weight: "400",
-});
+  variable: '--font-gowun-dodum',
+  subsets: ['latin'],
+  weight: '400',
+})
 
 export const metadata: Metadata = {
   title,
   description,
-  robots: "noindex, nofollow",
-};
+  robots: 'noindex, nofollow',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="ko">
@@ -35,5 +35,5 @@ export default function RootLayout({
         </main>
       </body>
     </html>
-  );
+  )
 }

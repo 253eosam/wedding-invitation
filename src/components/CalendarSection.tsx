@@ -1,3 +1,3 @@
 export default function CalendarSection() {
-  return <div>calendar section</div>;
+  return <div>calendar section</div>
 }

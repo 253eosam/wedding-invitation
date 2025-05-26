@@ -1,4 +1,4 @@
-import { accounts } from "@/assets/DB.json";
+import { accounts } from '@/assets/DB.json'
 
 export default function AccountSection() {
   return (
@@ -46,5 +46,5 @@ export default function AccountSection() {
         </details>
       </div>
     </section>
-  );
+  )
 }
