@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${CrimsonPro.variable} ${GowunDodum.variable} antialiased bg-[#efefef]`}
       >
-        <main className="w-[425px] bg-[#fafafa] mx-auto" role="main">
+        <main className="max-w-[425px] w-full bg-[#fafafa] mx-auto" role="main">
           {children}
         </main>
       </body>
