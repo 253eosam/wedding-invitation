@@ -6,12 +6,14 @@ import { title, description } from '@/assets/DB.json'
 const CrimsonPro = Crimson_Pro({
   variable: '--font-crimson-pro',
   subsets: ['latin'],
+  display: 'swap',
 })
 
 const GowunDodum = Gowun_Dodum({
   variable: '--font-gowun-dodum',
   subsets: ['latin'],
   weight: '400',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
