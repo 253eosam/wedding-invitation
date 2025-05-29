@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { IoIosArrowDown } from 'react-icons/io'
+import { TiArrowDownThick } from 'react-icons/ti'
 import Masonry from 'react-masonry-css'
 
 const heightMap = {
@@ -54,7 +54,7 @@ export default function GalleryMasonry() {
 
       <Masonry
         breakpointCols={breakpointColumns}
-        className="flex gap-4"
+        className={`flex gap-4 transition-[height]`}
         columnClassName="flex flex-col gap-4"
       >
         {visibleImages.map((img, idx) => (
@@ -76,12 +76,13 @@ export default function GalleryMasonry() {
       </Masonry>
 
       {!showAll && (
-        <div className="text-center mt-6">
+        <div className="text-center relative">
+          <div className="h-[100px] absolute bottom-[100%] left-0 right-0 gradient-fade-up" />
           <button
-            className="px-6 py-2 text-sm bg-[#f79e9e] text-white rounded hover:bg-[#e56c6c] transition font-gowun"
+            className="pt-5 text-sm font-gowun text-[#544f4f] flex gap-1 items-center mx-auto"
             onClick={() => setShowAll(true)}
           >
-            더보기 <IoIosArrowDown className="inline-block" />
+            더보기 <TiArrowDownThick className="inline-block" />
           </button>
         </div>
       )}
