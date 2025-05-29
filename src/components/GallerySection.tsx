@@ -44,7 +44,7 @@ export default function GalleryMasonry() {
   const visibleImages = showAll ? images : images.slice(0, previewCount)
 
   return (
-    <div className="px-4">
+    <section className="px-4">
       <h1 className="text-center mb-7.5">
         <p className="font-crimson text-[13px] text-[#f79e9e] tracking-[3px] opacity-60">
           GALLERY
@@ -86,6 +86,6 @@ export default function GalleryMasonry() {
           </button>
         </div>
       )}
-    </div>
+    </section>
   )
 }
