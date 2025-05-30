@@ -1,3 +1,5 @@
+[![Deploy to GitHub Pages](https://github.com/253eosam/wedding-invitation/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/253eosam/wedding-invitation/actions/workflows/deploy.yml)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
