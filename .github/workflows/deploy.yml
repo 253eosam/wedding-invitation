@@ -24,6 +24,10 @@ jobs:
       - name: Build (Static Export)
         run: yarn build
 
+      - name: Create .env file
+        run: |
+          echo "NEXT_PUBLIC_KAKAO_MAP_API_KEY=${{ secrets.NEXT_PUBLIC_KAKAO_MAP_API_KEY }}" >> .env
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
