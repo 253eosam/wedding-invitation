@@ -59,6 +59,12 @@ const flatCompat = [
         },
       ],
       'react/prop-types': 'off',
+      'import/no-anonymous-default-export': [
+        'error',
+        {
+          allowObject: true,
+        },
+      ],
     },
   },
 ]
