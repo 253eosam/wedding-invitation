@@ -10,6 +10,8 @@ export default function MapSection({
   const mapRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const loadScript = () => {
       return new Promise<void>((resolve) => {
         if (document.getElementById('kakao-map-script')) return resolve()
