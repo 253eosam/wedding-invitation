@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
 @theme inline {
+  --font-kor: var(--font-gowun-dodum);
+  --font-eng: var(--font-crimson-pro);
+
   --font-crimson: var(--font-crimson-pro);
   --font-gowun: var(--font-gowun-dodum);
   --font-noto: var(--font-noto-sans-kr);
 
+  --color-primary: #f79e9e;
+
   --color-highlight: rgb(247, 158, 158);
-  --color-primary: #2b2222;
   --color-secondary: rgb(84, 79, 79);
-  --font-kor: var(--font-gowun);
-  --font-eng: var(--font-crimson);
 }
 
 body{

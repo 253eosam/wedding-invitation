@@ -5,25 +5,15 @@ dayjs.locale('ko')
 import Calendar from '../ui/calendar'
 import classNames from 'classnames'
 import { useEffect, useState } from 'react'
+import { WeddingDate } from '@/models/model'
 
 export default function CalendarSection({
-  weddingDate,
-}: {
-  weddingDate: {
-    year: number
-    month: number
-    day: number
-    dayOfWeek: string
-    time: {
-      amPm: string
-      hour: number
-      minute: number
-    }
-  }
-}) {
-  const marryDate = dayjs(
-    `${weddingDate.year}.${weddingDate.month}.${weddingDate.day} ${weddingDate.time.hour}:${weddingDate.time.minute}`
-  )
+  year,
+  month,
+  day,
+  time,
+}: WeddingDate) {
+  const marryDate = dayjs(`${year}.${month}.${day} ${time.hour}:${time.minute}`)
 
   const [now, setNow] = useState(dayjs())
   useEffect(() => {
