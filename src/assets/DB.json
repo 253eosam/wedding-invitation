@@ -5,7 +5,12 @@
     "year": 2025,
     "month": 9,
     "day": 27,
-    "dayOfWeek": "sunday"
+    "dayOfWeek": "sunday",
+    "time": {
+      "amPm": "am",
+      "hour": 11,
+      "minute": 30
+    }
   },
   "names": {
     "groom": {

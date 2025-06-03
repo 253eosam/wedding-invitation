@@ -1,24 +1,61 @@
+import dayjs from 'dayjs'
+import 'dayjs/locale/ko'
+dayjs.locale('ko')
+
 import Calendar from './ui/calendar'
 import classNames from 'classnames'
+import { useEffect, useState } from 'react'
 
-export default function CalendarSection() {
+export default function CalendarSection({
+  weddingDate,
+}: {
+  weddingDate: {
+    year: number
+    month: number
+    day: number
+    dayOfWeek: string
+    time: {
+      amPm: string
+      hour: number
+      minute: number
+    }
+  }
+}) {
+  const marryDate = dayjs(
+    `${weddingDate.year}.${weddingDate.month}.${weddingDate.day} ${weddingDate.time.hour}:${weddingDate.time.minute}`
+  )
+
+  const [now, setNow] = useState(dayjs())
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNow(dayjs())
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
+  const diff = marryDate.diff(now, 'day')
+  const diffHours = marryDate.diff(now, 'hour') % 24
+  const diffMinutes = marryDate.diff(now, 'minute') % 60
+  const diffSeconds = marryDate.diff(now, 'second') % 60
+
   return (
     <section className="flex flex-col items-center text-center">
       <div className="text-secondary">
-        <h2 className="text-2xl">2025.11.09</h2>
-        <p className="text-medium mt-2">토요일 오전 11시 30분</p>
+        <h2 className="text-2xl">{marryDate.format('YYYY.MM.DD')}</h2>
+        <p className="text-medium mt-2">
+          {marryDate.format('dddd')} {marryDate.format('A hh시 mm분')}
+        </p>
       </div>
       <div className="my-9 w-full">
-        <Calendar />
+        <Calendar dday={marryDate} />
       </div>
       <div className="flex flex-row justify-center gap-0.5">
-        <DateUnit value="120" name="DAYS" />
+        <DateUnit value={diff.toString()} name="DAYS" />
         <DateUnit />
-        <DateUnit value="120" name="HOUR" />
+        <DateUnit value={diffHours.toString()} name="HOUR" />
         <DateUnit />
-        <DateUnit value="120" name="MIN" />
+        <DateUnit value={diffMinutes.toString()} name="MIN" />
         <DateUnit />
-        <DateUnit value="120" name="SEC" />
+        <DateUnit value={diffSeconds.toString()} name="SEC" />
       </div>
       <p className="mt-4 font-bold text-[#666666]">
         성준, 주희의 결혼식이 <strong className="text-highlight">100</strong>일
