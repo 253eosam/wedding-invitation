@@ -29,6 +29,7 @@ export default function MapSection({
       await loadScript()
 
       if (!mapRef.current) return
+      if (!window.kakao) return
       const container = mapRef.current
       const options = {
         center: new window.kakao.maps.LatLng(latitude, longitude),

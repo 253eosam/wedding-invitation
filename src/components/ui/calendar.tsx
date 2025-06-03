@@ -1,15 +1,13 @@
-import { useState } from 'react'
 import dayjs from 'dayjs'
 import classNames from 'classnames'
+import { memo } from 'react'
 
 const weekdays = ['일', '월', '화', '수', '목', '금', '토']
 
-export default function Calendar() {
-  const [current] = useState(dayjs('2025.11.09'))
-
-  const startOfMonth = current.startOf('month')
+export default memo(function Calendar({ dday }: { dday: dayjs.Dayjs }) {
+  const startOfMonth = dday.startOf('month')
   const startDay = startOfMonth.day() // 시작 요일 (0:일~6:토)
-  const daysInMonth = current.daysInMonth()
+  const daysInMonth = startOfMonth.daysInMonth()
 
   const dates = []
 
@@ -18,7 +16,7 @@ export default function Calendar() {
   }
 
   for (let i = 1; i <= daysInMonth; i++) {
-    dates.push(current.date(i))
+    dates.push(startOfMonth.date(i))
   }
   return (
     <div className="w-[280px] border-y border-[#eee] py-4 mx-auto">
@@ -37,7 +35,7 @@ export default function Calendar() {
       {/* Dates */}
       <div className="grid grid-cols-7 text-center text-[#544f4f]">
         {dates.map((date, idx) => {
-          const dDay = date?.isSame(current, 'day')
+          const dDay = date?.isSame(dday, 'day')
           const isSunday = date?.day() === 0
           return (
             <div
@@ -56,4 +54,4 @@ export default function Calendar() {
       </div>
     </div>
   )
-}
+})
