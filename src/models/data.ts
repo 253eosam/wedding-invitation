@@ -16,4 +16,72 @@ export default {
       minute: 0,
     },
   },
+  families: [
+    {
+      gender: 'groom',
+      name: '이성준',
+      relation: 'self',
+      phone: '01082623777',
+      account: {
+        bank: '신한은행',
+        accountNumber: '110-414-698540',
+        bankIdentity: '이성준',
+      },
+    },
+    {
+      gender: 'groom',
+      name: '이호상',
+      relation: 'father',
+      phone: '',
+      account: {
+        bank: '',
+        accountNumber: '',
+        bankIdentity: '',
+      },
+    },
+    {
+      gender: 'groom',
+      name: '권정자',
+      relation: 'mother',
+      phone: '',
+      account: {
+        bank: '',
+        accountNumber: '',
+        bankIdentity: '',
+      },
+    },
+    {
+      gender: 'bride',
+      name: '김주희',
+      relation: 'self',
+      phone: '',
+      account: {
+        bank: '',
+        accountNumber: '',
+        bankIdentity: '',
+      },
+    },
+    {
+      gender: 'bride',
+      name: '김형준',
+      relation: 'father',
+      phone: '',
+      account: {
+        bank: '',
+        accountNumber: '',
+        bankIdentity: '',
+      },
+    },
+    {
+      gender: 'bride',
+      name: '손유진',
+      relation: 'mother',
+      phone: '',
+      account: {
+        bank: '',
+        accountNumber: '',
+        bankIdentity: '',
+      },
+    },
+  ],
 } satisfies Data

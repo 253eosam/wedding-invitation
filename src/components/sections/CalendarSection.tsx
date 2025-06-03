@@ -1,6 +1,5 @@
 import dayjs from 'dayjs'
 import 'dayjs/locale/ko'
-dayjs.locale('ko')
 
 import Calendar from '../ui/calendar'
 import classNames from 'classnames'
@@ -32,7 +31,8 @@ export default function CalendarSection({
       <div className="text-secondary">
         <h2 className="text-2xl">{marryDate.format('YYYY.MM.DD')}</h2>
         <p className="text-medium mt-2">
-          {marryDate.format('dddd')} {marryDate.format('A hh시 mm분')}
+          {marryDate.locale('ko').format('dddd')}{' '}
+          {marryDate.format('A hh시 mm분')}
         </p>
       </div>
       <div className="my-9 w-full">

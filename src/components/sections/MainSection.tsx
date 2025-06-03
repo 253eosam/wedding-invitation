@@ -1,12 +1,25 @@
-import { weddingDate, description, names } from '@/models/DB.json'
+import { Data } from '@/models/model'
+import dayjs from 'dayjs'
 
-export default function MainSection() {
+export default function MainSection({ meta, weddingDate, families }: Data) {
+  const { year, month, day, time } = weddingDate
+  const marryDate = dayjs(`${year}.${month}.${day} ${time.hour}:${time.minute}`)
+
+  const groom = families.find(
+    (p) => p.gender === 'groom' && p.relation === 'self'
+  )
+  const bride = families.find(
+    (p) => p.gender === 'bride' && p.relation === 'self'
+  )
+
   return (
     <section>
       <div className="flex flex-col items-center font-crimson gap-1 text-[#49413a]">
-        <h1 className="text-[30px]">{`${weddingDate.year} / ${String(weddingDate.month).padStart(2, '0')} / ${weddingDate.day}`}</h1>
+        <h1 className="text-[30px] tracking-[-0.2]">
+          {marryDate.format('YYYY / MM / DD')}
+        </h1>
         <p className="text-base uppercase tracking-[2px]">
-          {weddingDate.dayOfWeek}
+          {marryDate.format('dddd')}
         </p>
       </div>
       <div className="my-15">
@@ -19,13 +32,13 @@ export default function MainSection() {
         />
       </div>
       <div className="flex flex-col items-center gap-y-5 font-gowun">
-        <div className="flex flex-row gap-2.5 text-lg">
-          <span>{names.groom.me}</span>
+        <div className="flex flex-row gap-2.5 text-lg tracking-[1]">
+          <span>{groom?.name}</span>
           <span>·</span>
-          <span>{names.bride.me}</span>
+          <span>{bride?.name}</span>
         </div>
-        <p className="whitespace-pre text-center text-base text-[#544f4f]">
-          {description}
+        <p className="whitespace-pre text-center text-base text-[#544f4f] leading-7">
+          {meta.description}
         </p>
       </div>
     </section>
