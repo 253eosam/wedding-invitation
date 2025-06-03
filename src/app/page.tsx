@@ -1,10 +1,10 @@
 'use client'
-import MainSection from '@/components/MainSection'
-import IntroSection from '@/components/IntroSection'
-import GallerySection from '@/components/GallerySection'
-import CalendarSection from '@/components/CalendarSection'
-import MapSection from '@/components/MapSection'
-import AccountSection from '@/components/AccountSection'
+import MainSection from '@/components/sections/MainSection'
+import InvitationSection from '@/components/sections/InvitationSection'
+import GallerySection from '@/components/sections/GallerySection'
+import CalendarSection from '@/components/sections/CalendarSection'
+import MapSection from '@/components/sections/MapSection'
+import AccountSection from '@/components/sections/AccountSection'
 import DB from '@/assets/DB.json'
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-y-15 py-15">
       <MainSection />
-      <IntroSection />
+      <InvitationSection />
       <GallerySection />
       <CalendarSection weddingDate={weddingDate} />
       <MapSection />

@@ -1,6 +1,6 @@
 import { names, contents, contacts } from '@/assets/DB.json'
 import { useEffect, useState } from 'react'
-import FullScreenDialog from '@/components/FullDialog'
+import FullScreenDialog from '@/components/sections/FullDialog'
 import { IoIosCall } from 'react-icons/io'
 import { IoIosMail } from 'react-icons/io'
 import { motion } from 'motion/react'

@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/ko'
 dayjs.locale('ko')
 
-import Calendar from './ui/calendar'
+import Calendar from '../ui/calendar'
 import classNames from 'classnames'
 import { useEffect, useState } from 'react'
 
