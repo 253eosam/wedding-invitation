@@ -8,11 +8,11 @@ import AccountSection from '@/components/sections/AccountSection'
 import { data } from '@/models'
 
 export default function Home() {
-  const { weddingDate } = data
+  const { meta, weddingDate, families } = data
 
   return (
     <div className="flex flex-col gap-y-15 py-15">
-      <MainSection />
+      <MainSection {...data} />
       <InvitationSection />
       <GallerySection />
       <CalendarSection {...weddingDate} />
