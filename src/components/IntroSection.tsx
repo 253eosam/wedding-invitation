@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import FullScreenDialog from '@/components/FullDialog'
 import { IoIosCall } from 'react-icons/io'
 import { IoIosMail } from 'react-icons/io'
+import { motion } from 'motion/react'
 
 export default function IntroSection() {
   const [open, setOpen] = useState(false)
@@ -13,7 +14,11 @@ export default function IntroSection() {
   }, [open])
 
   return (
-    <section className="flex flex-col items-center my-10">
+    <motion.section
+      initial={{ y: 10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className="flex flex-col items-center my-10"
+    >
       <h1 className="text-center">
         <p className="font-crimson text-sm text-[#f79e9e] tracking-[3px] opacity-60">
           INVITATION
@@ -167,6 +172,6 @@ export default function IntroSection() {
           </div>
         </div>
       </FullScreenDialog>
-    </section>
+    </motion.section>
   )
 }

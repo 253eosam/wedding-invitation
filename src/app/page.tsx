@@ -8,7 +8,7 @@ import AccountSection from '@/components/AccountSection'
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-y-15">
+    <div className="flex flex-col gap-y-15 py-15">
       <MainSection />
       <IntroSection />
       <GallerySection />

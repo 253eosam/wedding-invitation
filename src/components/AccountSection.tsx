@@ -1,4 +1,7 @@
 import { accounts } from '@/assets/DB.json'
+import classNames from 'classnames'
+import { IoIosArrowDown } from 'react-icons/io'
+import { FiCopy } from 'react-icons/fi'
 
 export default function AccountSection() {
   return (
@@ -21,36 +24,40 @@ export default function AccountSection() {
       </div>
 
       <div>
-        <details>
-          <summary className="font-kor text-lg font-medium tracking-[2px]">
-            신랑측 계좌번호
+        <details className="shadow rounded-lg w-[310px] mx-auto group text-base">
+          <summary className="font-kor rounded-t-lg font-medium tracking-[2px] text-center list-none bg-[#f3f3f3] px-5 h-[50px] flex items-center justify-center">
+            <p className="flex-1">신랑측 계좌번호</p>
+            <IoIosArrowDown
+              className={classNames('w-4 h-4', 'group-open:rotate-180')}
+              color="#999"
+            />
           </summary>
-          <div>
-            {Object.values(accounts.groom).map((account) => (
-              <div key={account.name}>
-                <button className="flex flex-row gap-x-2">
-                  <div className="flex flex-row gap-x-2">
-                    <p className="font-kor text-sm">{account.name}</p>
+          <div className="font-noto text-[13px] text-[#333333] font-light">
+            {Object.values(accounts.groom).map((account, idx) => (
+              <div key={account.name + idx} className="p-4 flex">
+                <button
+                  className="flex flex-col gap-x-2 cursor-pointer flex-1"
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      `${account.bank} ${account.account}`
+                    )
+                    alert('복사되었습니다.')
+                  }}
+                >
+                  <div className="flex gap-x-2">
+                    <FiCopy className="w-4 h-4" />
+
+                    <p className="">{account.name}</p>
                   </div>
                   <div className="flex flex-row gap-x-2">
-                    <p className="font-kor text-sm">{account.bank}</p>
-                    <p className="font-kor text-sm">{account.account}</p>
+                    <p className="">{account.bank}</p>
+                    <p className="">{account.account}</p>
                   </div>
-                  <div>{/* kakaopay button */}</div>
                 </button>
-              </div>
-            ))}
-          </div>
-        </details>
-        <details>
-          <summary>신부측 계좌번호</summary>
-          <div>
-            {Object.values(accounts.bride).map((account) => (
-              <div key={account.name}>
-                <p>{account.name}</p>
-                <div className="flex flex-row gap-x-2">
-                  <p>{account.bank}</p>
-                  <p>{account.account}</p>
+                <div className="w-[100px]">
+                  <button className="w-full h-full bg-[#f79e9e] text-white font-kor font-medium tracking-[2px] rounded-lg">
+                    카카오페이
+                  </button>
                 </div>
               </div>
             ))}
