@@ -1,4 +1,4 @@
-import { accounts } from '@/assets/DB.json'
+import { accounts } from '@/models/DB.json'
 import classNames from 'classnames'
 import { IoIosArrowDown } from 'react-icons/io'
 import { FiCopy } from 'react-icons/fi'

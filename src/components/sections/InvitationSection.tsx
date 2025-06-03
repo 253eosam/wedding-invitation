@@ -1,17 +1,13 @@
-import { names, contents, contacts } from '@/assets/DB.json'
-import { useEffect, useState } from 'react'
-import FullScreenDialog from '@/components/sections/FullDialog'
+import { names, contents, contacts } from '@/models/DB.json'
+import { useState } from 'react'
 import { IoIosCall } from 'react-icons/io'
 import { IoIosMail } from 'react-icons/io'
 import { motion } from 'motion/react'
+import Section from '@/components/Section'
+import { IoCall } from 'react-icons/io5'
 
 export default function IntroSection() {
   const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    if (open) document.body.classList.add('overflow-hidden')
-    else document.body.classList.remove('overflow-hidden')
-  }, [open])
 
   return (
     <motion.section
@@ -19,17 +15,10 @@ export default function IntroSection() {
       animate={{ y: 0, opacity: 1 }}
       className="flex flex-col items-center my-10"
     >
-      <h1 className="text-center">
-        <p className="font-crimson text-sm text-[#f79e9e] tracking-[3px] opacity-60">
-          INVITATION
-        </p>
-        <p className="text-[#f79e9e] text-xl mt-3 font-gowun">
-          소중한 분들을 초대합니다.
-        </p>
-      </h1>
+      <Section.Title kor="소중한 분들을 초대합니다." eng="INVITATION" />
       <div className="flex flex-col gap-y-10 whitespace-pre my-9 font-gowun text-[#585858] text-[15px] text-center leading-[30px]">
         {contents.map((content) => (
-          <p key={content}>{content}</p>
+          <Section.Typography key={content}>{content}</Section.Typography>
         ))}
       </div>
       <img src="https://placehold.co/360x240" alt="" className="rounded-2xl" />
@@ -49,15 +38,16 @@ export default function IntroSection() {
           {names.bride.me}
         </p>
       </div>
-      <button
+      <Section.Button
         onClick={() => setOpen(true)}
-        className="border border-[#eeeeee] bg-white py-[9px] px-[30px] rounded-xl text-[#404040] font-gowun w-[190px]"
+        className="flex items-center gap-x-2"
       >
+        <IoCall size={16} />
         연락하기
-      </button>
+      </Section.Button>
 
-      <FullScreenDialog isOpen={open} onClose={() => setOpen(false)}>
-        <div className="flex flex-col items-center text-[#ccc] text-center">
+      <Section.Dialog isOpen={open} onClose={() => setOpen(false)}>
+        <div className="flex flex-col items-center text-[#ccc] text-center overflow-auto h-full">
           <h2 className="mt-[50px]">
             <p className="font-crimson text-xs font-medium text-[#999] tracking-[3px]">
               CONTACT
@@ -171,7 +161,7 @@ export default function IntroSection() {
             </ul>
           </div>
         </div>
-      </FullScreenDialog>
+      </Section.Dialog>
     </motion.section>
   )
 }

@@ -1,4 +1,4 @@
-import { weddingDate, description, names } from '@/assets/DB.json'
+import { weddingDate, description, names } from '@/models/DB.json'
 
 export default function MainSection() {
   return (
