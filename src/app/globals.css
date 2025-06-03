@@ -3,6 +3,7 @@
 @theme inline {
   --font-crimson: var(--font-crimson-pro);
   --font-gowun: var(--font-gowun-dodum);
+  --font-noto: var(--font-noto-sans-kr);
 
   --color-highlight: rgb(247, 158, 158);
   --color-primary: #2b2222;
