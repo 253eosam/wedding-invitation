@@ -2,26 +2,25 @@ import { names, contents, contacts } from '@/models/DB.json'
 import { useState } from 'react'
 import { IoIosCall } from 'react-icons/io'
 import { IoIosMail } from 'react-icons/io'
-import { motion } from 'motion/react'
-import Section from '@/components/Section'
+import { Section } from '@/components/Section'
 import { IoCall } from 'react-icons/io5'
 
 export default function IntroSection() {
   const [open, setOpen] = useState(false)
 
   return (
-    <motion.section
-      initial={{ y: 10, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      className="flex flex-col items-center my-10"
-    >
+    <Section.Container className="flex flex-col items-center my-10">
       <Section.Title kor="소중한 분들을 초대합니다." eng="INVITATION" />
       <div className="flex flex-col gap-y-10 whitespace-pre my-9 font-gowun text-[#585858] text-[15px] text-center leading-[30px]">
         {contents.map((content) => (
           <Section.Typography key={content}>{content}</Section.Typography>
         ))}
       </div>
-      <img src="https://placehold.co/360x240" alt="" className="rounded-2xl" />
+      <Section.Image
+        src="https://placehold.co/360x240"
+        alt=""
+        className="rounded-2xl"
+      />
       <div className="font-gowun mt-6 mb-4 text-[#444]">
         <p className="flex gap-0.5">
           {names.groom.dad}
@@ -162,6 +161,6 @@ export default function IntroSection() {
           </div>
         </div>
       </Section.Dialog>
-    </motion.section>
+    </Section.Container>
   )
 }

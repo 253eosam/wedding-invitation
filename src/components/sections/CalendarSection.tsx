@@ -48,8 +48,8 @@ export default function CalendarSection({
         <DateUnit value={diffSeconds.toString()} name="SEC" />
       </div>
       <p className="mt-4 font-bold text-[#666666]">
-        성준, 주희의 결혼식이 <strong className="text-highlight">100</strong>일
-        남았습니다.
+        성준, 주희의 결혼식이 <strong className="text-highlight">{diff}</strong>
+        일 남았습니다.
       </p>
     </section>
   )
