@@ -2,6 +2,7 @@ export interface Data {
   meta: Meta
   weddingDate: WeddingDate
   families: Person[]
+  gallery: Image[]
 }
 
 export interface Meta {
@@ -30,4 +31,9 @@ export interface Person {
     accountNumber: string
     bankIdentity: string
   }
+}
+
+export interface Image {
+  src: string
+  height: 1 | 2
 }
