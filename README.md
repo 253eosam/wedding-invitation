@@ -1,38 +1,102 @@
-[![Deploy to GitHub Pages](https://github.com/253eosam/wedding-invitation/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/253eosam/wedding-invitation/actions/workflows/deploy.yml)
+# Wedding Invitation
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+A modern wedding invitation web app built with Next.js 15 and React 19.
 
-## Getting Started
+## 🚀 Tech Stack
 
-First, run the development server:
+- **Framework**: [Next.js 15](https://nextjs.org/)
+- **Language**: [TypeScript 5](https://www.typescriptlang.org/)
+- **CSS**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Animation**: [Motion One](https://motion.dev/)
+- **Date Handling**: [Day.js](https://day.js.org/)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
+- **Masonry Layout**: [React Masonry CSS](https://www.npmjs.com/package/react-masonry-css)
+- **Runtime**: [Node.js 20](https://nodejs.org/en)
+- **Linting/Formatting**: [ESLint 9](https://eslint.org/), [Prettier 3](https://prettier.io/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 📦 Scripts
+
+| Command         | Description                               |
+| --------------- | ----------------------------------------- |
+| `yarn dev`      | Run the development server with Turbopack |
+| `yarn build`    | Build the app for production              |
+| `yarn start`    | Start the production server               |
+| `yarn export`   | Export the app as static HTML             |
+| `yarn lint`     | Run ESLint                                |
+| `yarn lint:fix` | Run ESLint with auto-fix                  |
+| `yarn deploy`   | Alias for `yarn build`                    |
+
+## 🛠️ Setup
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/wedding-invitation.git
+   cd wedding-invitation
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   yarn install
+   ```
+
+3. Run the development server:
+
+   ```bash
+   yarn dev
+   ```
+
+4. Build for production:
+
+   ```bash
+   yarn build
+   ```
+
+5. (Optional) Export static files:
+
+   ```bash
+   yarn export
+   ```
+
+## 📝 Linting and Formatting
+
+- Run linter:
+
+  ```bash
+  yarn lint
+  ```
+
+- Run linter with auto-fix:
+
+  ```bash
+  yarn lint:fix
+  ```
+
+Prettier and ESLint are pre-configured to maintain consistent code style.
+
+## 🧩 Project Structure
+
+```
+.
+├── public/         # Static assets
+├── src/            # Application source code
+├── styles/         # Global styles (Tailwind CSS)
+├── pages/          # Next.js pages
+├── components/     # Reusable components
+├── models/         # Data models (modify here for reuse)
+├── tsconfig.json   # TypeScript configuration
+├── tailwind.config.js # Tailwind configuration
+├── .eslintrc.json  # ESLint configuration
+└── package.json    # Project manifest
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> To reuse this project, simply update the data inside the `models` directory to fit your needs.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📜 License
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project is licensed under the [MIT License](LICENSE).
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> Built with ❤️ and Next.js
