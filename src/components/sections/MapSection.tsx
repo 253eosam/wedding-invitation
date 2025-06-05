@@ -1,12 +1,10 @@
+import { MapInfo } from '@/models/model'
 import { useEffect, useRef } from 'react'
+import { Section } from '../Section'
+import Link from 'next/link'
 
-export default function MapSection({
-  latitude = 33.450701,
-  longitude = 126.570667,
-}: {
-  latitude?: number
-  longitude?: number
-}) {
+export default function MapSection({ position, name }: MapInfo) {
+  const { latitude, longitude } = position
   const mapRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -43,5 +41,16 @@ export default function MapSection({
     initMap()
   }, [latitude, longitude])
 
-  return <div ref={mapRef} style={{ width: '100%', height: '400px' }} />
+  return (
+    <div className="flex flex-col gap-y-6">
+      <div ref={mapRef} style={{ width: '100%', height: '400px' }} />
+      <Link
+        href={`https://map.kakao.com/link/map/${name},${latitude},${longitude}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Section.Button className="mx-9">바로가기</Section.Button>
+      </Link>
+    </div>
+  )
 }

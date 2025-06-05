@@ -3,18 +3,17 @@ import { TiArrowDownThick } from 'react-icons/ti'
 import Masonry from 'react-masonry-css'
 import type { Image } from '@/models/model'
 import { Section } from '../Section'
+import { motion } from 'motion/react'
 
 const heightMap = {
   1: 160,
   2: 280,
 }
-
 const breakpointColumns = {
   default: 2,
   768: 2,
   480: 1,
 }
-
 const DEFAULT_PREVIEW_PERCENT = 0.2 as const
 
 export default function GalleryMasonry({ images }: { images: Image[] }) {
@@ -31,26 +30,26 @@ export default function GalleryMasonry({ images }: { images: Image[] }) {
         <p className="text-[#f79e9e] text-xl mt-1 font-gowun">우리의 순간</p>
       </h1>
 
-      <Masonry
-        breakpointCols={breakpointColumns}
-        className={`flex gap-4 transition-[height]`}
-        columnClassName="flex flex-col gap-4"
-      >
-        {visibleImages.map((img, idx) => (
-          <img
-            key={idx}
-            src={img.src}
-            alt={`image-${idx}`}
-            className="rounded w-full object-cover"
-            style={{ height: `${heightMap[img.height]}px` }}
-            onError={(e) => {
-              const target = e.target as HTMLImageElement
-              target.src = 'https://placehold.co/400x200?text=Image+Not+Found'
-              target.onerror = null
-            }}
-          />
-        ))}
-      </Masonry>
+      <motion.div layout transition={{ duration: 0.2 }}>
+        <Masonry
+          breakpointCols={breakpointColumns}
+          className="flex gap-4"
+          columnClassName="flex flex-col gap-4"
+        >
+          {visibleImages.map((img, idx) => (
+            <motion.img
+              key={img.src}
+              src={img.src}
+              alt={`image-${idx}`}
+              className="rounded w-full object-cover bg-white"
+              style={{ height: `${heightMap[img.height]}px` }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+          ))}
+        </Masonry>
+      </motion.div>
 
       {!showAll && (
         <div className="text-center relative">

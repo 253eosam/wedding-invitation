@@ -11,7 +11,9 @@ export default function CalendarSection({
   month,
   day,
   time,
-}: WeddingDate) {
+  groom = '신랑',
+  bride = '신부',
+}: WeddingDate & { [person in 'groom' | 'bride']?: string }) {
   const marryDate = dayjs(
     `${year}/${month}/${day} ${time.hour}:${time.minute}`,
     'YYYY/MM/DD hh:mm'
@@ -51,8 +53,8 @@ export default function CalendarSection({
         <DateUnit value={diffSeconds.toString()} name="SEC" />
       </div>
       <p className="mt-4 font-bold text-[#666666]">
-        성준, 주희의 결혼식이 <strong className="text-highlight">{diff}</strong>
-        일 남았습니다.
+        {groom}, {bride}의 결혼식이{' '}
+        <strong className="text-highlight">{diff}</strong>일 남았습니다.
       </p>
     </section>
   )
@@ -68,12 +70,12 @@ const DateUnit = ({
   return (
     <div
       className={classNames(
-        'flex flex-col font-crimson',
+        'flex flex-col font-crimson text-[#2b2222]',
         value === ':' ? 'min-w-2 text-base' : 'min-w-8 text-2xl'
       )}
     >
-      <p className="text-primary opacity-40 text-[10px] uppercase">{name}</p>
-      <p className="text-primary opacity-80">{value}</p>
+      <p className="opacity-40 text-[10px] uppercase">{name}</p>
+      <p className="opacity-80">{value}</p>
     </div>
   )
 }

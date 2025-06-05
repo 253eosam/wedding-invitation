@@ -3,6 +3,7 @@ export interface Data {
   weddingDate: WeddingDate
   families: Person[]
   gallery: Image[]
+  map: MapInfo
 }
 
 export interface Meta {
@@ -36,4 +37,12 @@ export interface Person {
 export interface Image {
   src: string
   height: 1 | 2
+}
+
+export interface MapInfo {
+  name: string
+  position: {
+    latitude: number
+    longitude: number
+  }
 }

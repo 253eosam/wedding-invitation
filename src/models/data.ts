@@ -106,4 +106,11 @@ export default {
     { src: 'https://placehold.co/400x300', height: 1 },
     { src: 'https://placehold.co/400x600', height: 2 },
   ],
+  map: {
+    name: '더BMK컨벤션',
+    position: {
+      latitude: 36.31983198404643,
+      longitude: 127.40508053198738,
+    },
+  },
 } satisfies Data
