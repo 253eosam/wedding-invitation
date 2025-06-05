@@ -3,7 +3,10 @@ import dayjs from 'dayjs'
 
 export default function MainSection({ meta, weddingDate, families }: Data) {
   const { year, month, day, time } = weddingDate
-  const marryDate = dayjs(`${year}.${month}.${day} ${time.hour}:${time.minute}`)
+  const marryDate = dayjs(
+    `${year}/${month}/${day} ${time.hour}:${time.minute}`,
+    'YYYY/MM/DD hh:mm'
+  )
 
   const groom = families.find(
     (p) => p.gender === 'groom' && p.relation === 'self'

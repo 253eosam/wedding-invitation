@@ -1,10 +1,10 @@
-import dayjs from 'dayjs'
+import type { Dayjs } from 'dayjs'
 import classNames from 'classnames'
 import { memo } from 'react'
 
 const weekdays = ['일', '월', '화', '수', '목', '금', '토']
 
-export default memo(function Calendar({ dday }: { dday: dayjs.Dayjs }) {
+export default memo(function Calendar({ dday }: { dday: Dayjs }) {
   const startOfMonth = dday.startOf('month')
   const startDay = startOfMonth.day() // 시작 요일 (0:일~6:토)
   const daysInMonth = startOfMonth.daysInMonth()
