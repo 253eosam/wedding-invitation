@@ -12,7 +12,10 @@ export default function CalendarSection({
   day,
   time,
 }: WeddingDate) {
-  const marryDate = dayjs(`${year}.${month}.${day} ${time.hour}:${time.minute}`)
+  const marryDate = dayjs(
+    `${year}/${month}/${day} ${time.hour}:${time.minute}`,
+    'YYYY/MM/DD hh:mm'
+  )
 
   const [now, setNow] = useState(dayjs())
   useEffect(() => {
