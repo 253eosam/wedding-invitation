@@ -3,42 +3,39 @@ import { useEffect, useRef } from 'react'
 import { Section } from '../Section'
 import Link from 'next/link'
 
+const NAVER_CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID
+
+const loadNaverScript = (): Promise<void> => {
+  return new Promise((resolve) => {
+    const script = document.createElement('script')
+    script.id = 'naver-map-script'
+    script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${NAVER_CLIENT_ID}&callback=CALLBACK_FUNCTION"`
+    script.async = true
+    script.onload = () => resolve()
+    document.head.appendChild(script)
+  })
+}
+
 export default function MapSection({ position, name }: MapInfo) {
   const { latitude, longitude } = position
   const mapRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (typeof window === 'undefined') return
+    loadNaverScript().then(() => {
+      const { naver } = window
+      if (!naver || !mapRef.current) return
 
-    const loadScript = () => {
-      return new Promise<void>((resolve) => {
-        if (document.getElementById('kakao-map-script')) return resolve()
-        const script = document.createElement('script')
-        script.id = 'kakao-map-script'
-        script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY}&autoload=false`
-        script.onload = () => {
-          window.kakao.maps.load(() => {
-            resolve()
-          })
-        }
-        document.head.appendChild(script)
-      })
-    }
+      // const map = new naver.maps.Map(mapRef.current, {
+      //   center: new naver.maps.LatLng(latitude, longitude),
+      //   zoom: 15,
+      // })
 
-    const initMap = async () => {
-      await loadScript()
-
-      if (!mapRef.current) return
-      if (!window.kakao) return
-      const container = mapRef.current
-      const options = {
-        center: new window.kakao.maps.LatLng(latitude, longitude),
-        level: 3,
-      }
-      new window.kakao.maps.Map(container, options)
-    }
-
-    initMap()
+      // new naver.maps.Marker({
+      //   map,
+      //   position: new naver.maps.LatLng(latitude, longitude),
+      //   clickable: false,
+      // })
+    })
   }, [latitude, longitude])
 
   return (
