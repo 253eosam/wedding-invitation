@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Crimson_Pro, Gowun_Dodum, Noto_Sans_KR } from 'next/font/google'
 import '@/app/globals.css'
-import { title, description } from '@/models/DB.json'
+import { data } from '@/models'
 
 const CrimsonPro = Crimson_Pro({
   variable: '--font-crimson-pro',
@@ -24,8 +24,8 @@ const NotoSansKR = Noto_Sans_KR({
 })
 
 export const metadata: Metadata = {
-  title,
-  description,
+  title: data.meta.title,
+  description: data.meta.description,
   robots: 'noindex, nofollow',
 }
 

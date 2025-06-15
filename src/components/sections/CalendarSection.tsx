@@ -5,6 +5,7 @@ import Calendar from '../ui/calendar'
 import classNames from 'classnames'
 import { useEffect, useState } from 'react'
 import { WeddingDate } from '@/models/model'
+import { Section } from '../Section'
 
 export default function CalendarSection({
   year,
@@ -32,7 +33,8 @@ export default function CalendarSection({
   const diffSeconds = marryDate.diff(now, 'second') % 60
 
   return (
-    <section className="flex flex-col items-center text-center">
+    <Section.Container className="text-center flex flex-col gap-y-9">
+      <Section.Title kor="날짜" eng="CALENDAR" />
       <div className="text-secondary">
         <h2 className="text-2xl">{marryDate.format('YYYY.MM.DD')}</h2>
         <p className="text-medium mt-2">
@@ -40,7 +42,7 @@ export default function CalendarSection({
           {marryDate.format('A hh시 mm분')}
         </p>
       </div>
-      <div className="my-9 w-full">
+      <div className="w-full">
         <Calendar dday={marryDate} />
       </div>
       <div className="flex flex-row justify-center gap-0.5">
@@ -56,7 +58,7 @@ export default function CalendarSection({
         {groom}, {bride}의 결혼식이{' '}
         <strong className="text-highlight">{diff}</strong>일 남았습니다.
       </p>
-    </section>
+    </Section.Container>
   )
 }
 

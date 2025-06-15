@@ -41,6 +41,9 @@ export interface Image {
 
 export interface MapInfo {
   name: string
+  address: string
+  addressDetail: string
+  tel: string
   position: {
     latitude: number
     longitude: number
