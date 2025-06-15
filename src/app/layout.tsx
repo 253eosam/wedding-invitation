@@ -55,6 +55,21 @@ export default function RootLayout({
           href="/favicon/favicon-16x16.png"
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        {/* open graph */}
+        <meta property="og:title" content={data.meta.title} />
+        <meta property="og:description" content={data.meta.description} />
+        <meta property="og:image" content="https://example.com/image.png" />
+        <meta property="og:url" content={data.meta.url} />
+
+        {/* twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={data.meta.title} />
+        <meta name="twitter:description" content={data.meta.description} />
+        <meta
+          name="twitter:image"
+          content="https://example.com/twitter-image.jpg"
+        />
       </head>
       <body
         className={`${CrimsonPro.variable} ${GowunDodum.variable} ${NotoSansKR.variable} antialiased bg-[#efefef]`}
