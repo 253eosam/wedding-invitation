@@ -28,7 +28,7 @@ export default function Home() {
         bride={bride?.name}
       />
       <MapSection {...map} />
-      <AccountSection />
+      <AccountSection families={families} />
     </div>
   )
 }
