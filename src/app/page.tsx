@@ -8,7 +8,7 @@ import AccountSection from '@/components/sections/AccountSection'
 import { data } from '@/models'
 
 export default function Home() {
-  const { meta, weddingDate, families, gallery, map } = data
+  const { weddingDate, families, gallery, map } = data
 
   const groom = families.find(
     (person) => person.gender === 'groom' && person.relation === 'self'
@@ -16,11 +16,13 @@ export default function Home() {
   const bride = families.find(
     (person) => person.gender === 'bride' && person.relation === 'self'
   )
+  const groomFamily = families.filter((person) => person.gender === 'groom')
+  const brideFamily = families.filter((person) => person.gender === 'bride')
 
   return (
-    <div className="flex flex-col gap-y-15 py-15">
+    <div className="flex flex-col gap-y-25 py-15">
       <MainSection {...data} />
-      <InvitationSection />
+      <InvitationSection groomFamily={groomFamily} brideFamily={brideFamily} />
       <GallerySection images={gallery} />
       <CalendarSection
         {...weddingDate}

@@ -1,15 +1,33 @@
-import { names, contents, contacts } from '@/models/DB.json'
 import { useState } from 'react'
 import { IoIosCall } from 'react-icons/io'
 import { IoIosMail } from 'react-icons/io'
 import { Section } from '@/components/Section'
 import { IoCall } from 'react-icons/io5'
+import { Person } from '@/models/model'
 
-export default function IntroSection() {
+export default function IntroSection({
+  brideFamily,
+  groomFamily,
+}: {
+  groomFamily: Person[]
+  brideFamily: Person[]
+}) {
   const [open, setOpen] = useState(false)
+  const contents = [
+    '100년 동안 당신을 모르고 사는 것보다,\n당신을 알고 지금 죽는게 더 나아요.\n\n- 디즈니, <포카혼타스> 中 -',
+    '-',
+    '평생 서로 귀하게 여기며\n첫 마음 그대로 존중하고\n배려하며 살겠습니다.',
+    '오로지 믿음과 사랑을 약속하는 날\n오셔서 축복해 주시면 더 없는 기쁨으로\n간직하겠습니다.',
+  ]
+  const groomSelf = groomFamily.find(({ relation }) => relation === 'self')
+  const groomFather = groomFamily.find(({ relation }) => relation === 'father')
+  const groomMother = groomFamily.find(({ relation }) => relation === 'mother')
+  const brideSelf = brideFamily.find(({ relation }) => relation === 'self')
+  const brideFather = brideFamily.find(({ relation }) => relation === 'father')
+  const brideMother = brideFamily.find(({ relation }) => relation === 'mother')
 
   return (
-    <Section.Container className="flex flex-col items-center my-10">
+    <Section.Container className="flex flex-col items-center">
       <Section.Title kor="소중한 분들을 초대합니다." eng="INVITATION" />
       <div className="flex flex-col gap-y-10 whitespace-pre my-9 font-gowun text-[#585858] text-[15px] text-center leading-[30px]">
         {contents.map((content) => (
@@ -23,18 +41,18 @@ export default function IntroSection() {
       />
       <div className="font-gowun mt-6 mb-4 text-[#444]">
         <p className="flex gap-0.5">
-          {names.groom.dad}
+          {groomFather?.name}
           <span className="text-[#777]">·</span>
-          {names.groom.mom}
+          {groomMother?.name}
           <span className="text-[#777] mr-1">의 장남 </span>
-          {names.groom.me}
+          {groomSelf?.name}
         </p>
         <p className="flex gap-0.5">
-          {names.bride.dad}
+          {brideFather?.name}
           <span className="text-[#777]">·</span>
-          {names.bride.mom}
+          {brideMother?.name}
           <span className="text-[#777] mr-1">의 차녀 </span>
-          {names.bride.me}
+          {brideSelf?.name}
         </p>
       </div>
       <Section.Button
@@ -66,13 +84,13 @@ export default function IntroSection() {
               <li className="my-5 flex">
                 <p className="flex-1/3 text-start ">신랑</p>
                 <p className="flex-1/3 text-[15px] text-white">
-                  {names.groom.me}
+                  {groomSelf?.name}
                 </p>
                 <div className="flex-1/3 flex justify-end gap-x-5">
-                  <a href={`tel:${contacts.groom.me}`}>
+                  <a href={`tel:${groomSelf?.phone}`}>
                     <IoIosCall size={20} />
                   </a>
-                  <a href={`sms:${contacts.groom.me}`}>
+                  <a href={`sms:${groomSelf?.phone}`}>
                     <IoIosMail size={20} />
                   </a>
                 </div>
@@ -80,13 +98,13 @@ export default function IntroSection() {
               <li className="my-5 flex">
                 <p className="flex-1/3 text-start ">신랑 아버지</p>
                 <p className="flex-1/3 text-[15px] text-white">
-                  {names.groom.dad}
+                  {groomFather?.name}
                 </p>
                 <div className="flex-1/3 flex justify-end gap-x-5">
-                  <a href={`tel:${contacts.groom.dad}`}>
+                  <a href={`tel:${groomFather?.phone}`}>
                     <IoIosCall size={20} />
                   </a>
-                  <a href={`sms:${contacts.groom.dad}`}>
+                  <a href={`sms:${groomFather?.phone}`}>
                     <IoIosMail size={20} />
                   </a>
                 </div>
@@ -94,13 +112,13 @@ export default function IntroSection() {
               <li className="my-5 flex">
                 <p className="flex-1/3 text-start ">신랑 어머니</p>
                 <p className="flex-1/3 text-[15px] text-white">
-                  {names.groom.mom}
+                  {groomMother?.name}
                 </p>
                 <div className="flex-1/3 flex justify-end gap-x-5">
-                  <a href={`tel:${contacts.groom.mom}`}>
+                  <a href={`tel:${groomMother?.phone}`}>
                     <IoIosCall size={20} />
                   </a>
-                  <a href={`sms:${contacts.groom.mom}`}>
+                  <a href={`sms:${groomMother?.phone}`}>
                     <IoIosMail size={20} />
                   </a>
                 </div>
@@ -118,13 +136,13 @@ export default function IntroSection() {
               <li className="my-5 flex">
                 <p className="flex-1/3 text-start ">신부</p>
                 <p className="flex-1/3 text-[15px] text-white">
-                  {names.bride.me}
+                  {brideSelf?.name}
                 </p>
                 <div className="flex-1/3 flex justify-end gap-x-5">
-                  <a href={`tel:${contacts.bride.me}`}>
+                  <a href={`tel:${brideSelf?.phone}`}>
                     <IoIosCall size={20} />
                   </a>
-                  <a href={`sms:${contacts.bride.me}`}>
+                  <a href={`sms:${brideSelf?.phone}`}>
                     <IoIosMail size={20} />
                   </a>
                 </div>
@@ -132,13 +150,13 @@ export default function IntroSection() {
               <li className="my-5 flex">
                 <p className="flex-1/3 text-start ">신부 아버지</p>
                 <p className="flex-1/3 text-[15px] text-white">
-                  {names.bride.dad}
+                  {brideFather?.name}
                 </p>
                 <div className="flex-1/3 flex justify-end gap-x-5">
-                  <a href={`tel:${contacts.bride.dad}`}>
+                  <a href={`tel:${brideFather?.phone}`}>
                     <IoIosCall size={20} />
                   </a>
-                  <a href={`sms:${contacts.bride.dad}`}>
+                  <a href={`sms:${brideFather?.phone}`}>
                     <IoIosMail size={20} />
                   </a>
                 </div>
@@ -146,13 +164,13 @@ export default function IntroSection() {
               <li className="my-5 flex">
                 <p className="flex-1/3 text-start ">신부 어머니</p>
                 <p className="flex-1/3 text-[15px] text-white">
-                  {names.bride.mom}
+                  {brideMother?.name}
                 </p>
                 <div className="flex-1/3 flex justify-end gap-x-5">
-                  <a href={`tel:${contacts.bride.mom}`}>
+                  <a href={`tel:${brideMother?.phone}`}>
                     <IoIosCall size={20} />
                   </a>
-                  <a href={`sms:${contacts.bride.mom}`}>
+                  <a href={`sms:${brideMother?.phone}`}>
                     <IoIosMail size={20} />
                   </a>
                 </div>

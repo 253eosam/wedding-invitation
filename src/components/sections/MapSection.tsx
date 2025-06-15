@@ -17,7 +17,12 @@ const loadNaverScript = (): Promise<void> => {
   })
 }
 
-export default function MapSection({ position, link }: MapInfo) {
+export default function MapSection({
+  position,
+  link,
+  address,
+  addressDetail,
+}: MapInfo) {
   const { latitude, longitude } = position
   const mapRef = useRef<HTMLDivElement>(null)
 
@@ -40,19 +45,26 @@ export default function MapSection({ position, link }: MapInfo) {
   }, [latitude, longitude])
 
   return (
-    <div className="flex flex-col gap-y-6">
+    <Section.Container className="flex flex-col gap-y-6">
+      <Section.Title kor="오시는 길" eng="LOCATION" />
+      <div>
+        <Section.Typography className="text-[20px] text-black">
+          {addressDetail}
+        </Section.Typography>
+        <Section.Typography>{address}</Section.Typography>
+      </div>
       <div ref={mapRef} style={{ width: '100%', height: '400px' }} />
       <Link
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-fit mx-auto"
+        className="w-fit mx-auto inline-block"
       >
         <Section.Button className="flex items-center gap-1">
           <SiNaver className="inline-block" />
           네이버지도
         </Section.Button>
       </Link>
-    </div>
+    </Section.Container>
   )
 }

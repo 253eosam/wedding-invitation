@@ -107,7 +107,10 @@ export default {
     { src: 'https://placehold.co/400x600', height: 2 },
   ],
   map: {
-    name: '더BMK컨벤션',
+    name: 'BMK웨딩홀',
+    address: '대전 중구 서문로 133',
+    addressDetail: 'BMK 웨딩홀 4층, 아스틴홀',
+    tel: '042-334-1000',
     position: {
       latitude: 36.31983198404643,
       longitude: 127.40508053198738,
