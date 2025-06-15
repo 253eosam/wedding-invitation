@@ -6,7 +6,8 @@ export default {
     description:
       '2025년 11월 9일 일요일 오후 2시\n대전 BMK 웨딩컨벤션 아스틴홀',
     url: 'https://253eosam.github.io/wedding-invitation/',
-    thumbnail: '/images/thumbnail.png',
+    thumbnail:
+      'https://253eosam.github.io/wedding-invitation/images/thumbnail.png',
   },
   weddingDate: {
     year: 2025,
