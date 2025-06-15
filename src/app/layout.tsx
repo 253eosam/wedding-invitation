@@ -59,17 +59,14 @@ export default function RootLayout({
         {/* open graph */}
         <meta property="og:title" content={data.meta.title} />
         <meta property="og:description" content={data.meta.description} />
-        <meta property="og:image" content="https://example.com/image.png" />
+        <meta property="og:image" content={data.meta.thumbnail} />
         <meta property="og:url" content={data.meta.url} />
 
         {/* twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={data.meta.title} />
         <meta name="twitter:description" content={data.meta.description} />
-        <meta
-          name="twitter:image"
-          content="https://example.com/twitter-image.jpg"
-        />
+        <meta name="twitter:image" content={data.meta.thumbnail} />
       </head>
       <body
         className={`${CrimsonPro.variable} ${GowunDodum.variable} ${NotoSansKR.variable} antialiased bg-[#efefef]`}
