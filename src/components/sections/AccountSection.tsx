@@ -20,11 +20,11 @@ export default function AccountSection({ families }: { families: Person[] }) {
     <Section.Container>
       <Section.Title kor={title} eng="ACCOUNT" />
 
-      <div className="flex flex-col gap-y-10 whitespace-pre my-9 font-gowun text-[#585858] text-[15px] text-center leading-[30px]">
-        <p>{content}</p>
+      <div className="flex flex-col gap-y-10 whitespace-pre font-gowun text-[#585858] text-[15px] text-center leading-[30px]">
+        {content}
       </div>
 
-      <div>
+      <div className="flex flex-col gap-10">
         <details
           open
           className="shadow rounded-lg w-[310px] mx-auto group text-base"
@@ -38,18 +38,18 @@ export default function AccountSection({ families }: { families: Person[] }) {
           </summary>
           <div className="font-noto text-[13px] text-[#333333] font-light">
             {groomFamily.map(({ account, name }, idx) => (
-              <div key={name + idx} className="p-4 flex">
-                <button
-                  className="flex flex-col gap-x-2 cursor-pointer flex-1"
-                  onClick={() => {
-                    navigator.clipboard.writeText(
-                      `${account.bank} ${account.accountNumber}`
-                    )
-                    alert(
-                      `${account.bank}(${account.bankIdentity})\n${account.accountNumber} 복사되었습니다.`
-                    )
-                  }}
-                >
+              <button
+                key={name + idx}
+                className="flex flex-row w-full gap-x-2 cursor-pointer flex-1 p-4"
+                onClick={() => {
+                  const copyContent = `${account.bank} ${account.accountNumber}`
+                  navigator.clipboard.writeText(copyContent)
+                  alert(
+                    `${account.bank}(${account.bankIdentity}) ${account.accountNumber} 복사되었습니다.`
+                  )
+                }}
+              >
+                <div className="flex flex-col gap-x-2 cursor-pointer flex-1">
                   <div className="flex gap-x-2">
                     <p className="">{name}</p>
                   </div>
@@ -57,9 +57,47 @@ export default function AccountSection({ families }: { families: Person[] }) {
                     <p className="">{account.bank}</p>
                     <p className="">{account.accountNumber}</p>
                   </div>
-                </button>
+                </div>
                 <FiCopy className="w-4 h-4" />
-              </div>
+              </button>
+            ))}
+          </div>
+        </details>
+        <details
+          open
+          className="shadow rounded-lg w-[310px] mx-auto group text-base"
+        >
+          <summary className="font-kor rounded-t-lg font-medium tracking-[2px] text-center list-none bg-[#f3f3f3] px-5 h-[50px] flex items-center justify-center">
+            <p className="flex-1">신부측 계좌번호</p>
+            <IoIosArrowDown
+              className={classNames('w-4 h-4', 'group-open:rotate-180')}
+              color="#999"
+            />
+          </summary>
+          <div className="font-noto text-[13px] text-[#333333] font-light">
+            {brideFamily.map(({ account, name }, idx) => (
+              <button
+                key={name + idx}
+                className="flex flex-row w-full gap-x-2 cursor-pointer flex-1 p-4"
+                onClick={() => {
+                  const copyContent = `${account.bank} ${account.accountNumber}`
+                  navigator.clipboard.writeText(copyContent)
+                  alert(
+                    `${account.bank}(${account.bankIdentity}) ${account.accountNumber} 복사되었습니다.`
+                  )
+                }}
+              >
+                <div className="flex flex-col gap-x-2 cursor-pointer flex-1">
+                  <div className="flex gap-x-2">
+                    <p className="">{name}</p>
+                  </div>
+                  <div className="flex flex-row gap-x-2">
+                    <p className="">{account.bank}</p>
+                    <p className="">{account.accountNumber}</p>
+                  </div>
+                </div>
+                <FiCopy className="w-4 h-4" />
+              </button>
             ))}
           </div>
         </details>
