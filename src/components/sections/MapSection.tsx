@@ -25,16 +25,16 @@ export default function MapSection({ position, name }: MapInfo) {
       const { naver } = window
       if (!naver || !mapRef.current) return
 
-      // const map = new naver.maps.Map(mapRef.current, {
-      //   center: new naver.maps.LatLng(latitude, longitude),
-      //   zoom: 15,
-      // })
+      const map = new naver.maps.Map(mapRef.current, {
+        center: new naver.maps.LatLng(latitude, longitude),
+        zoom: 15,
+      })
 
-      // new naver.maps.Marker({
-      //   map,
-      //   position: new naver.maps.LatLng(latitude, longitude),
-      //   clickable: false,
-      // })
+      new naver.maps.Marker({
+        map,
+        position: new naver.maps.LatLng(latitude, longitude),
+        clickable: false,
+      })
     })
   }, [latitude, longitude])
 
