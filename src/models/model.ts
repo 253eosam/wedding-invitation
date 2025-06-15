@@ -45,4 +45,5 @@ export interface MapInfo {
     latitude: number
     longitude: number
   }
+  link: string
 }

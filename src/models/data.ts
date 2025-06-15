@@ -112,5 +112,6 @@ export default {
       latitude: 36.31983198404643,
       longitude: 127.40508053198738,
     },
+    link: 'https://naver.me/58NdrkXq',
   },
 } satisfies Data

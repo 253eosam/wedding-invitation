@@ -2,6 +2,7 @@ import { MapInfo } from '@/models/model'
 import { useEffect, useRef } from 'react'
 import { Section } from '../Section'
 import Link from 'next/link'
+import { SiNaver } from 'react-icons/si'
 
 const NAVER_CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID
 
@@ -16,7 +17,7 @@ const loadNaverScript = (): Promise<void> => {
   })
 }
 
-export default function MapSection({ position, name }: MapInfo) {
+export default function MapSection({ position, link }: MapInfo) {
   const { latitude, longitude } = position
   const mapRef = useRef<HTMLDivElement>(null)
 
@@ -42,11 +43,15 @@ export default function MapSection({ position, name }: MapInfo) {
     <div className="flex flex-col gap-y-6">
       <div ref={mapRef} style={{ width: '100%', height: '400px' }} />
       <Link
-        href={`https://map.kakao.com/link/map/${name},${latitude},${longitude}`}
+        href={link}
         target="_blank"
         rel="noopener noreferrer"
+        className="w-fit mx-auto"
       >
-        <Section.Button className="mx-9">바로가기</Section.Button>
+        <Section.Button className="flex items-center gap-1">
+          <SiNaver className="inline-block" />
+          네이버지도
+        </Section.Button>
       </Link>
     </div>
   )
