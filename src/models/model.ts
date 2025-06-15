@@ -9,6 +9,8 @@ export interface Data {
 export interface Meta {
   title: string
   description: string
+  url: string
+  thumbnail: string
 }
 
 export interface WeddingDate {
