@@ -17,6 +17,7 @@
   "dependencies": {
     "classnames": "^2.5.1",
     "dayjs": "^1.11.13",
+    "framer-motion": "^12.18.1",
     "motion": "^12.15.0",
     "next": "15.3.2",
     "react": "^19.0.0",
@@ -37,5 +38,5 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+  "packageManager": "pnpm@9.6.0+sha1.65cd48c20dd329b7f455088b6dd17d4d5b6d02e3"
 }
