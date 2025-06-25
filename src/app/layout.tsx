@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Crimson_Pro, Gowun_Dodum, Noto_Sans_KR } from 'next/font/google'
 import '@/app/globals.css'
 import { data } from '@/models'
@@ -27,6 +27,14 @@ export const metadata: Metadata = {
   title: data.meta.title,
   description: data.meta.description,
   robots: 'noindex, nofollow',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: '#fafafa',
 }
 
 export default function RootLayout({
