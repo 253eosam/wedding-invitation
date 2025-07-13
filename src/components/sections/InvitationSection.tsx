@@ -3,14 +3,16 @@ import { IoIosCall } from 'react-icons/io'
 import { IoIosMail } from 'react-icons/io'
 import { Section } from '@/components/Section'
 import { IoCall } from 'react-icons/io5'
-import { Person } from '@/models/model'
+import { OtherSectionImage, Person } from '@/models/model'
 
 export default function IntroSection({
   brideFamily,
   groomFamily,
+  images,
 }: {
   groomFamily: Person[]
   brideFamily: Person[]
+  images: OtherSectionImage
 }) {
   const [open, setOpen] = useState(false)
   const contents = [
@@ -34,11 +36,7 @@ export default function IntroSection({
           <Section.Typography key={content}>{content}</Section.Typography>
         ))}
       </div>
-      <Section.Image
-        src="https://placehold.co/360x240"
-        alt=""
-        className="rounded-2xl"
-      />
+      <Section.Image src={images.invitation} alt="" className="rounded-2xl" />
       <div className="font-gowun mt-6 mb-4 text-[#444]">
         <p className="flex gap-0.5">
           {groomFather?.name}

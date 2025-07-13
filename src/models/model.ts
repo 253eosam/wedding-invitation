@@ -2,8 +2,14 @@ export interface Data {
   meta: Meta
   weddingDate: WeddingDate
   families: Person[]
+  images: OtherSectionImage
   gallery: Image[]
   map: MapInfo
+}
+
+export interface OtherSectionImage {
+  main: string
+  invitation: string
 }
 
 export interface Meta {

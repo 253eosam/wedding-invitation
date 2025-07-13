@@ -1,7 +1,12 @@
 import { Data } from '@/models/model'
 import dayjs from 'dayjs'
 
-export default function MainSection({ meta, weddingDate, families }: Data) {
+export default function MainSection({
+  meta,
+  weddingDate,
+  families,
+  images,
+}: Data) {
   const { year, month, day, time } = weddingDate
   const marryDate = dayjs(
     `${year}/${month}/${day} ${time.hour}:${time.minute}`,
@@ -27,7 +32,7 @@ export default function MainSection({ meta, weddingDate, families }: Data) {
       </div>
       <div className="my-15">
         <img
-          src="https://placehold.co/425x585"
+          src={images.main}
           alt="메인 이미지"
           className="rounded-2xl"
           width={425}

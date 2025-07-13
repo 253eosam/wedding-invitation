@@ -87,9 +87,20 @@ export default {
       },
     },
   ],
+  images: {
+    main: 'https://253eosam.github.io/wedding-invitation/images/thumbnail.png',
+    invitation:
+      'https://253eosam.github.io/wedding-invitation/images/thumbnail.png',
+  },
   gallery: [
-    { src: 'https://placehold.co/400x600', height: 2 },
-    { src: 'https://placehold.co/400x300', height: 1 },
+    {
+      src: 'https://253eosam.github.io/wedding-invitation/images/thumbnail.png',
+      height: 2,
+    },
+    {
+      src: 'https://253eosam.github.io/wedding-invitation/images/thumbnail.png',
+      height: 1,
+    },
     { src: 'https://placehold.co/400x300', height: 1 },
     { src: 'https://placehold.co/400x600', height: 2 },
     { src: 'https://placehold.co/400x300', height: 1 },
