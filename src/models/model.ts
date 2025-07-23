@@ -3,7 +3,7 @@ export interface Data {
   weddingDate: WeddingDate
   families: Person[]
   images: OtherSectionImage
-  gallery: Image[]
+  gallery: string[]
   map: MapInfo
 }
 
@@ -41,12 +41,6 @@ export interface Person {
     bankIdentity: string
   }
 }
-
-export interface Image {
-  src: string
-  height: 1 | 2
-}
-
 export interface MapInfo {
   name: string
   address: string
