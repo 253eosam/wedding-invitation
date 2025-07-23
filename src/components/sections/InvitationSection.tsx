@@ -36,7 +36,13 @@ export default function IntroSection({
           <Section.Typography key={content}>{content}</Section.Typography>
         ))}
       </div>
-      <Section.Image src={images.invitation} alt="" className="rounded-2xl" />
+      <Section.Image
+        src={images.invitation}
+        alt=""
+        className="rounded-2xl w-[425px] h-[425px] object-cover object-bottom"
+        width={425}
+        height={425}
+      />
       <div className="font-gowun mt-6 mb-4 text-[#444]">
         <p className="flex gap-0.5">
           {groomFather?.name}
