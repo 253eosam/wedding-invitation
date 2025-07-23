@@ -34,7 +34,7 @@ export default function MainSection({
         <img
           src={images.main}
           alt="메인 이미지"
-          className="rounded-2xl"
+          className="rounded-2xl w-[425px] h-[585px] object-cover object-bottom"
           width={425}
           height={585}
         />

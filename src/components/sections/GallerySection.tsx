@@ -48,7 +48,9 @@ export default function GalleryMasonry({ images }: { images: string[] }) {
                 onClick={() => handleImageClick(image, imageIndex)}
                 key={image}
                 src={image}
-                alt={`image-${imageIndex}`}
+                alt={`갤러리의 ${imageIndex + 1}번째 웨딩 사진`}
+                width={125}
+                height={125}
                 className="w-[125px] h-[125px] object-cover rounded"
               />
             ))}
