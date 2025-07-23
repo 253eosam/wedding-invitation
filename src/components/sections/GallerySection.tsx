@@ -2,14 +2,13 @@ import { useState } from 'react'
 import { Section } from '../Section'
 import classNames from 'classnames'
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md'
-
-const DEFAULT_PREVIEW_PERCENT = 0.2 as const
+import { chunk } from '@/utils/chunk'
 
 export default function GalleryMasonry({ images }: { images: string[] }) {
-  const previewCount = Math.ceil(images.length * DEFAULT_PREVIEW_PERCENT)
-
   const [selectedImg, setSelectedImg] = useState<string | null>(null)
   const [selectedIndex, setSelectedIndex] = useState<number>(-1)
+
+  const chunkedImages = chunk(images, 3)
 
   const handleImageClick = (src: string, index: number) => {
     setSelectedImg(src)
@@ -40,6 +39,22 @@ export default function GalleryMasonry({ images }: { images: string[] }) {
         </p>
         <p className="text-[#f79e9e] text-xl mt-1 font-gowun">우리의 순간</p>
       </h1>
+
+      <div className="flex gap-1.5">
+        {chunkedImages.map((column, colIndex) => (
+          <div key={colIndex} className="flex flex-col gap-4 min-w-[125px]">
+            {column.map((image, imageIndex) => (
+              <img
+                onClick={() => handleImageClick(image, imageIndex)}
+                key={image}
+                src={image}
+                alt={`image-${imageIndex}`}
+                className="w-[125px] h-[125px] object-cover rounded"
+              />
+            ))}
+          </div>
+        ))}
+      </div>
 
       <Section.Dialog
         isOpen={Boolean(selectedImg)}

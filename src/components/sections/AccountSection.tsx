@@ -45,7 +45,7 @@ export default function AccountSection({ families }: { families: Person[] }) {
                   const copyContent = `${account.bank} ${account.accountNumber}`
                   navigator.clipboard.writeText(copyContent)
                   alert(
-                    `${account.bank}(${account.bankIdentity}) ${account.accountNumber} 복사되었습니다.`
+                    `${account.bank}: ${account.accountNumber} (${account.bankIdentity})  복사되었습니다.`
                   )
                 }}
               >
