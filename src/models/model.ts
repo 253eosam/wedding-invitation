@@ -5,6 +5,7 @@ export interface Data {
   images: OtherSectionImage
   gallery: Gallery[]
   map: MapInfo
+  bgm: string
 }
 
 export interface OtherSectionImage {

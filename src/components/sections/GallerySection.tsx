@@ -38,7 +38,7 @@ export default function GalleryMasonry({ images }: { images: Gallery[] }) {
   }
 
   return (
-    <Section.Container fadeUp className="px-4">
+    <Section.Container fadeUp className="px-2">
       <h1 className="text-center mb-7.5">
         <p className="font-crimson text-[13px] text-[#f79e9e] tracking-[3px] opacity-60">
           GALLERY
@@ -46,7 +46,7 @@ export default function GalleryMasonry({ images }: { images: Gallery[] }) {
         <p className="text-[#f79e9e] text-xl mt-1 font-gowun">우리의 순간</p>
       </h1>
 
-      <div className="flex flex-wrap gap-1.5">
+      <div className="grid grid-cols-3 gap-1.5">
         {images.map((image, imageIndex) => (
           <img
             onClick={() => handleImageClick(image.src, imageIndex)}

@@ -7,7 +7,7 @@ export default {
       '2025년 11월 9일 일요일 오후 2시\n대전 BMK 웨딩컨벤션 아스틴홀',
     url: 'https://253eosam.github.io/wedding-invitation/',
     thumbnail:
-      'https://253eosam.github.io/wedding-invitation/images/thumbnail.png',
+      'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/19-h2.jpg',
   },
   weddingDate: {
     year: 2025,
@@ -68,22 +68,22 @@ export default {
       gender: 'bride',
       name: '김형준',
       relation: 'father',
-      phone: '',
+      phone: '010-3427-3319',
       account: {
-        bank: '',
-        accountNumber: '',
-        bankIdentity: '',
+        bank: '국민',
+        accountNumber: '451-21-1294-665',
+        bankIdentity: '김형준',
       },
     },
     {
       gender: 'bride',
       name: '손유진',
       relation: 'mother',
-      phone: '',
+      phone: '010-3264-3318',
       account: {
-        bank: '',
-        accountNumber: '',
-        bankIdentity: '',
+        bank: '농협',
+        accountNumber: '453026-56-124036',
+        bankIdentity: '손유진',
       },
     },
   ],
@@ -143,4 +143,5 @@ export default {
     },
     link: 'https://naver.me/58NdrkXq',
   },
+  bgm: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation//wedding-bgm.mp3',
 } satisfies Data
