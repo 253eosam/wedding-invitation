@@ -1,14 +1,12 @@
 import { useState } from 'react'
 import { Section } from '../Section'
 import classNames from 'classnames'
-import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md'
-import { chunk } from '@/utils/chunk'
+import { Gallery } from '@/models/model'
+import { motion } from 'framer-motion'
 
-export default function GalleryMasonry({ images }: { images: string[] }) {
+export default function GalleryMasonry({ images }: { images: Gallery[] }) {
   const [selectedImg, setSelectedImg] = useState<string | null>(null)
-  const [selectedIndex, setSelectedIndex] = useState<number>(-1)
-
-  const chunkedImages = chunk(images, 3)
+  const [selectedIndex, setSelectedIndex] = useState<number>(0)
 
   const handleImageClick = (src: string, index: number) => {
     setSelectedImg(src)
@@ -16,18 +14,26 @@ export default function GalleryMasonry({ images }: { images: string[] }) {
   }
 
   const handlePrevImage = () => {
-    if (selectedIndex > 0) {
-      const newIndex = selectedIndex - 1
+    const newIndex = selectedIndex - 1
+    if (0 <= newIndex) {
       setSelectedIndex(newIndex)
-      setSelectedImg(images[newIndex])
+      setSelectedImg(images[newIndex].src)
+    } else {
+      const last = images.length - 1
+      setSelectedIndex(last)
+      setSelectedImg(images[last].src)
     }
   }
 
   const handleNextImage = () => {
-    if (selectedIndex < images.length - 1) {
-      const newIndex = selectedIndex + 1
+    const newIndex = selectedIndex + 1
+    if (newIndex <= images.length - 1) {
       setSelectedIndex(newIndex)
-      setSelectedImg(images[newIndex])
+      setSelectedImg(images[newIndex].src)
+    } else {
+      const first = 0
+      setSelectedIndex(first)
+      setSelectedImg(images[first].src)
     }
   }
 
@@ -40,21 +46,20 @@ export default function GalleryMasonry({ images }: { images: string[] }) {
         <p className="text-[#f79e9e] text-xl mt-1 font-gowun">우리의 순간</p>
       </h1>
 
-      <div className="flex gap-1.5">
-        {chunkedImages.map((column, colIndex) => (
-          <div key={colIndex} className="flex flex-col gap-4 min-w-[125px]">
-            {column.map((image, imageIndex) => (
-              <img
-                onClick={() => handleImageClick(image, imageIndex)}
-                key={image}
-                src={image}
-                alt={`갤러리의 ${imageIndex + 1}번째 웨딩 사진`}
-                width={125}
-                height={125}
-                className="w-[125px] h-[125px] object-cover rounded"
-              />
-            ))}
-          </div>
+      <div className="flex flex-wrap gap-1.5">
+        {images.map((image, imageIndex) => (
+          <img
+            onClick={() => handleImageClick(image.src, imageIndex)}
+            key={image.src}
+            src={image.src}
+            alt={`갤러리의 ${imageIndex + 1}번째 웨딩 사진`}
+            width={125}
+            height={125}
+            className={classNames(
+              'w-[125px] h-[125px] object-cover rounded',
+              image.position
+            )}
+          />
         ))}
       </div>
 
@@ -65,33 +70,32 @@ export default function GalleryMasonry({ images }: { images: string[] }) {
           setSelectedIndex(-1)
         }}
       >
-        <button
-          className={classNames('absolute top-1/2 -translate-y-1/2 left-4')}
-          onClick={handlePrevImage}
-          disabled={selectedIndex <= 0}
+        <motion.div
+          key={selectedImg}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            x: { type: 'spring', stiffness: 300, damping: 30 },
+            opacity: { duration: 0.2 },
+          }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={false}
+          onDragEnd={(e, info) => {
+            if (info.offset.x < -100) {
+              handleNextImage()
+            } else if (info.offset.x > 100) {
+              handlePrevImage()
+            }
+          }}
         >
-          <MdArrowBackIos
-            size={60}
-            color={selectedIndex <= 0 ? 'gray' : 'white'}
-          />
-        </button>
-        <div className="flex items-center justify-center h-full w-full">
           <img
             src={selectedImg as string}
             alt="갤러리에서 선택한 이미지가 fullscreen으로 화면에 나옵니다."
-            className="h-[100vh] max-w-[85vw] object-contain"
+            className="h-[100vh] w-full object-contain"
           />
-        </div>
-        <button
-          className={classNames('absolute top-1/2 -translate-y-1/2 right-4')}
-          onClick={handleNextImage}
-          disabled={selectedIndex >= images.length - 1}
-        >
-          <MdArrowForwardIos
-            size={60}
-            color={selectedIndex >= images.length - 1 ? 'gray' : 'white'}
-          />
-        </button>
+        </motion.div>
       </Section.Dialog>
     </Section.Container>
   )

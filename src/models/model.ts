@@ -3,13 +3,13 @@ export interface Data {
   weddingDate: WeddingDate
   families: Person[]
   images: OtherSectionImage
-  gallery: string[]
+  gallery: Gallery[]
   map: MapInfo
 }
 
 export interface OtherSectionImage {
   main: string
-  invitation: string
+  invitation: string[]
 }
 
 export interface Meta {
@@ -28,6 +28,11 @@ export interface WeddingDate {
     hour: number
     minute: number
   }
+}
+
+export interface Gallery {
+  src: string
+  position: 'object-center' | 'object-bottom'
 }
 
 export interface Person {

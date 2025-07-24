@@ -36,13 +36,27 @@ export default function IntroSection({
           <Section.Typography key={content}>{content}</Section.Typography>
         ))}
       </div>
-      <Section.Image
-        src={images.invitation}
-        alt=""
-        className="rounded-2xl w-[425px] h-[425px] object-cover object-bottom"
-        width={425}
-        height={425}
-      />
+
+      <div className="flex gap-2 mx-2">
+        <div className="flex flex-col gap-4">
+          <Section.Image
+            src={images.invitation[0]}
+            alt=""
+            className="rounded-2xl w-[425px] h-[425px] object-cover object-bottom"
+            width={425}
+            height={425}
+          />
+        </div>
+        <div className="flex flex-col gap-4">
+          <Section.Image
+            src={images.invitation[1]}
+            alt=""
+            className="rounded-2xl w-[425px] h-[425px] object-cover object-bottom"
+            width={425}
+            height={425}
+          />
+        </div>
+      </div>
       <div className="font-gowun mt-6 mb-4 text-[#444]">
         <p className="flex gap-0.5">
           {groomFather?.name}
@@ -78,7 +92,7 @@ export default function IntroSection({
             </p>
           </h2>
           <div className="mt-15 font-gowun text-sm">
-            <p className="border-b-1 border-dotted border-gray-400 pb-2.5 w-[300] text-start">
+            <p className="border-b-1 border-dotted border-gray-400 pb-2.5 w-[300px] text-start">
               신랑측
               <span className="text-[#999] text-xs align-bottom ml-1 tracking-[3px]">
                 GROOM
@@ -130,7 +144,7 @@ export default function IntroSection({
             </ul>
           </div>
           <div className="mt-15 font-gowun text-sm">
-            <p className="border-b-1 border-dotted border-gray-400 pb-2.5 w-[300] text-start">
+            <p className="border-b-1 border-dotted border-gray-400 pb-2.5 w-[300px] text-start">
               신부측
               <span className="text-[#999] text-xs align-bottom ml-1 tracking-[3px]">
                 BRIDE
