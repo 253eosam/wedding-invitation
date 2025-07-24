@@ -108,7 +108,17 @@ const SectionDialog = ({
       aria-modal="true"
       aria-label="Section Dialog"
     >
-      <div className="relative w-full h-full backdrop-blur-sm">
+      <motion.div
+        drag="y"
+        dragConstraints={{ top: 0, bottom: 0 }}
+        onDragEnd={(e, info) => {
+          if (info.offset.y > 100) {
+            onClose()
+          }
+        }}
+        dragElastic={0.2}
+        className="w-full h-full"
+      >
         <button
           className="absolute top-4 right-4 text-[#ccc] w-11 h-11 text-2xl"
           onClick={onClose}
@@ -117,7 +127,7 @@ const SectionDialog = ({
           ✕
         </button>
         {children}
-      </div>
+      </motion.div>
     </motion.div>
   )
 }

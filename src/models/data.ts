@@ -89,22 +89,48 @@ export default {
   ],
   images: {
     main: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/19-h2.jpg',
-    invitation:
-      'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/14-h2.jpg',
+    invitation: [
+      'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/20-h2.jpg',
+      'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/21-h2.jpg',
+    ],
   },
   gallery: [
-    'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/4-h2.jpg',
-    'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/8-h2.jpg',
-    'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/3-h2.jpg',
-    //
-    'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/5-h1.jpg',
-    'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/2-h1.jpg',
-    'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/26-h2.jpg',
-    //
-    'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/6-h1.jpg',
-    'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/7-h2.jpg',
-    'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/23-h2.jpg',
-    //
+    {
+      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/4-h2.jpg',
+      position: 'object-center',
+    },
+    {
+      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/2-h1.jpg',
+      position: 'object-center',
+    },
+    {
+      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/3-h2.jpg',
+      position: 'object-center',
+    },
+    {
+      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/8-h2.jpg',
+      position: 'object-center',
+    },
+    {
+      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/24-h2.jpg',
+      position: 'object-bottom',
+    },
+    {
+      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/7-h2.jpg',
+      position: 'object-center',
+    },
+    {
+      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/26-h2.jpg',
+      position: 'object-center',
+    },
+    {
+      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/18-h2.jpg',
+      position: 'object-center',
+    },
+    {
+      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/23-h2.jpg',
+      position: 'object-center',
+    },
   ],
   map: {
     name: 'BMK웨딩홀',
