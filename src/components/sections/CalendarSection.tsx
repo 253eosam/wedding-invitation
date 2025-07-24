@@ -38,8 +38,8 @@ export default function CalendarSection({
       <div className="text-secondary">
         <h2 className="text-2xl">{marryDate.format('YYYY.MM.DD')}</h2>
         <p className="text-medium mt-2">
-          {marryDate.locale('ko').format('dddd')}{' '}
-          {marryDate.format('A hh시 mm분')}
+          {marryDate.locale('ko').format('dddd')} {time.amPm.toUpperCase()}{' '}
+          {marryDate.format('hh시 mm분')}
         </p>
       </div>
       <div className="w-full">

@@ -13,6 +13,7 @@ export function useBGMPlayer(src: string) {
         src: [src],
         loop: true,
         volume: 0.4,
+        preload: true,
         onplay: () => setIsPlaying(true),
         onend: () => setIsPlaying(false),
         onstop: () => setIsPlaying(false),
