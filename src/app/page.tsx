@@ -9,6 +9,8 @@ import { data } from '@/models'
 import { useBGMPlayer } from '@/utils/useBGMPlayer'
 import { FaCirclePlay } from 'react-icons/fa6'
 import { FaRegPlayCircle } from 'react-icons/fa'
+import IntroFullScreenSection from '@/components/sections/IntroFullScreenSection'
+import { useState } from 'react'
 
 export default function Home() {
   const { weddingDate, families, gallery, map, images, bgm } = data
@@ -23,8 +25,19 @@ export default function Home() {
   const groomFamily = families.filter((person) => person.gender === 'groom')
   const brideFamily = families.filter((person) => person.gender === 'bride')
 
+  const [showIntro, setShowIntro] = useState(true)
+
+  const handleClick = () => {
+    setShowIntro(false)
+  }
+
   return (
     <>
+      {showIntro && (
+        <div onClick={handleClick}>
+          <IntroFullScreenSection />
+        </div>
+      )}
       <div
         onClick={() => toggle()}
         className="flex justify-end items-center gap-1 mr-4"

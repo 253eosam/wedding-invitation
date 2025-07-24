@@ -16,8 +16,6 @@ export default function IntroSection({
 }) {
   const [open, setOpen] = useState(false)
   const contents = [
-    '100년 동안 당신을 모르고 사는 것보다,\n당신을 알고 지금 죽는게 더 나아요.\n\n- 디즈니, <포카혼타스> 中 -',
-    '-',
     '평생 서로 귀하게 여기며\n첫 마음 그대로 존중하고\n배려하며 살겠습니다.',
     '오로지 믿음과 사랑을 약속하는 날\n오셔서 축복해 주시면 더 없는 기쁨으로\n간직하겠습니다.',
   ]
