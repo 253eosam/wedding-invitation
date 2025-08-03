@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
   ...(isProd && {
     basePath: '/wedding-invitation',
     assetPrefix: '/wedding-invitation/',
+    images: {
+      unoptimized: true, // 'export' 모드에서는 필수
+    },
   }),
 }
 
