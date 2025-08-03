@@ -6,8 +6,7 @@ export default {
     description:
       '2025년 11월 9일 일요일 오후 2시\n대전 BMK 웨딩컨벤션 아스틴홀',
     url: 'https://253eosam.github.io/wedding-invitation/',
-    thumbnail:
-      'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/19-h2.jpg',
+    thumbnail: '/images/thumbnail.jpg',
   },
   weddingDate: {
     year: 2025,
@@ -88,47 +87,44 @@ export default {
     },
   ],
   images: {
-    main: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/19-h2.jpg',
-    invitation: [
-      'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/20-h2.jpg',
-      'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/21-h2.jpg',
-    ],
+    main: '/images/main.jpg',
+    invitation: ['/images/single-m.png', '/images/single-w.png'],
   },
   gallery: [
     {
-      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/4-h2.jpg',
+      src: '/images/YJH_0056.jpg',
       position: 'object-center',
     },
     {
-      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/2-h1.jpg',
+      src: '/images/YJH_0267.jpg',
       position: 'object-center',
     },
     {
-      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/3-h2.jpg',
-      position: 'object-center',
-    },
-    {
-      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/8-h2.jpg',
-      position: 'object-center',
-    },
-    {
-      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/24-h2.jpg',
+      src: '/images/YJH_0800.jpg',
       position: 'object-bottom',
     },
     {
-      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/7-h2.jpg',
+      src: '/images/YJH_0459.jpg',
       position: 'object-center',
     },
     {
-      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/26-h2.jpg',
+      src: '/images/YJH_0590.jpg',
+      position: 'object-bottom',
+    },
+    {
+      src: '/images/YJH_9938.jpg',
       position: 'object-center',
     },
     {
-      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/18-h2.jpg',
+      src: '/images/YJH_0720.jpg',
       position: 'object-center',
     },
     {
-      src: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation/images/23-h2.jpg',
+      src: '/images/YJH_0788.jpg',
+      position: 'object-bottom',
+    },
+    {
+      src: '/images/YJH_0360.jpg',
       position: 'object-center',
     },
   ],
@@ -143,5 +139,5 @@ export default {
     },
     link: 'https://naver.me/58NdrkXq',
   },
-  bgm: 'https://ljnchackdhfxulottnzx.supabase.co/storage/v1/object/public/wedding-invitation//wedding-bgm.mp3',
+  bgm: '/music/wedding-bgm.mp3',
 } satisfies Data

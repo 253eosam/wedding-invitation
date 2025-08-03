@@ -40,18 +40,18 @@ export default function IntroSection({
           <Section.Image
             src={images.invitation[0]}
             alt=""
-            className="rounded-2xl w-[425px] h-[425px] object-cover object-bottom"
-            width={425}
-            height={425}
+            className="rounded-2xl w-[200px] h-[280px] object-cover object-bottom"
+            width={200}
+            height={280}
           />
         </div>
         <div className="flex flex-col gap-4">
           <Section.Image
             src={images.invitation[1]}
             alt=""
-            className="rounded-2xl w-[425px] h-[425px] object-cover object-bottom"
-            width={425}
-            height={425}
+            className="rounded-2xl w-[200px] h-[280px] object-cover object-bottom"
+            width={200}
+            height={280}
           />
         </div>
       </div>
