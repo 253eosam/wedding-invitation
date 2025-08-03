@@ -10,7 +10,8 @@ import { useBGMPlayer } from '@/utils/useBGMPlayer'
 import { FaCirclePlay } from 'react-icons/fa6'
 import { FaRegPlayCircle } from 'react-icons/fa'
 import IntroFullScreenSection from '@/components/sections/IntroFullScreenSection'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 
 export default function Home() {
   const { weddingDate, families, gallery, map, images, bgm } = data
@@ -31,13 +32,31 @@ export default function Home() {
     setShowIntro(false)
   }
 
+  useEffect(() => {
+    if (showIntro) {
+      document.body.classList.add('overflow-hidden')
+    } else document.body.classList.remove('overflow-hidden')
+  }, [showIntro])
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <>
-      {showIntro && (
-        <div onClick={handleClick}>
-          <IntroFullScreenSection />
-        </div>
-      )}
+      <AnimatePresence>
+        {showIntro && (
+          <motion.div
+            className="intro"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5 }}
+          >
+            <IntroFullScreenSection onClick={handleClick} />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div
         onClick={() => toggle()}
         className="flex justify-end items-center gap-1 mr-4"

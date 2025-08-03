@@ -9,6 +9,7 @@ export interface Data {
 }
 
 export interface OtherSectionImage {
+  intro: string
   main: string
   invitation: string[]
 }
