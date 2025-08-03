@@ -2,7 +2,7 @@ import type { Data } from '@/models/model'
 
 const isProd = process.env.NODE_ENV === 'production' // build 시점
 const mapperBuildPath = (path: string) => {
-  const publicPrefix = '/wedding-invitation/'
+  const publicPrefix = '/wedding-invitation'
   if (isProd) return publicPrefix + path
   return path
 }
@@ -13,7 +13,7 @@ export default {
     description:
       '2025년 11월 9일 일요일 오후 2시\n대전 BMK 웨딩컨벤션 아스틴홀',
     url: 'https://253eosam.github.io/wedding-invitation/',
-    thumbnail: mapperBuildPath('/thumbnail.jpg'),
+    thumbnail: mapperBuildPath('/images/thumbnail.png'),
   },
   weddingDate: {
     year: 2025,
