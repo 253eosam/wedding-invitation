@@ -77,9 +77,12 @@ export default function RootLayout({
         <meta name="twitter:image" content={data.meta.thumbnail} />
       </head>
       <body
-        className={`${CrimsonPro.variable} ${GowunDodum.variable} ${NotoSansKR.variable} antialiased bg-[#efefef]`}
+        className={`${CrimsonPro.variable} ${GowunDodum.variable} ${NotoSansKR.variable} antialiased bg-[#efefef] overflow-hidden`}
       >
-        <main className="max-w-[425px] w-full bg-[#fafafa] mx-auto" role="main">
+        <main
+          className="max-w-[425px] w-full bg-[#fafafa] mx-auto relative"
+          role="main"
+        >
           {children}
         </main>
       </body>
