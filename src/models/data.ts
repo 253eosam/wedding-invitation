@@ -94,7 +94,7 @@ export default {
     },
   ],
   images: {
-    main: '/images/main.jpg',
+    main: mapperBuildPath('/images/main.jpg'),
     invitation: ['/images/single-m.png', '/images/single-w.png'].map(
       mapperBuildPath
     ),
