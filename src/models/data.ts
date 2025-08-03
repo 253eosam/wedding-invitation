@@ -1,12 +1,19 @@
 import type { Data } from '@/models/model'
 
+const isProd = process.env.NODE_ENV === 'production' // build 시점
+const mapperBuildPath = (path: string) => {
+  const publicPrefix = '/wedding-invitation/'
+  if (isProd) return publicPrefix + path
+  return path
+}
+
 export default {
   meta: {
     title: '이성준, 김주희 결혼합니다',
     description:
       '2025년 11월 9일 일요일 오후 2시\n대전 BMK 웨딩컨벤션 아스틴홀',
     url: 'https://253eosam.github.io/wedding-invitation/',
-    thumbnail: '/thumbnail.jpg',
+    thumbnail: mapperBuildPath('/thumbnail.jpg'),
   },
   weddingDate: {
     year: 2025,
@@ -88,7 +95,9 @@ export default {
   ],
   images: {
     main: '/images/main.jpg',
-    invitation: ['/images/single-m.png', '/images/single-w.png'],
+    invitation: ['/images/single-m.png', '/images/single-w.png'].map(
+      mapperBuildPath
+    ),
   },
   gallery: [
     {
@@ -127,7 +136,10 @@ export default {
       src: '/images/YJH_0360.jpg',
       position: 'object-center',
     },
-  ],
+  ].map(({ position, src }) => ({
+    src: mapperBuildPath(src),
+    position: position as Data['gallery'][number]['position'],
+  })),
   map: {
     name: 'BMK웨딩홀',
     address: '대전 중구 서문로 133',
@@ -139,5 +151,5 @@ export default {
     },
     link: 'https://naver.me/58NdrkXq',
   },
-  bgm: '/music/wedding-bgm.mp3',
+  bgm: mapperBuildPath('/music/wedding-bgm.mp3'),
 } satisfies Data
