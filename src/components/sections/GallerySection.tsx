@@ -3,6 +3,7 @@ import { Section } from '../Section'
 import classNames from 'classnames'
 import { Gallery } from '@/models/model'
 import { motion } from 'framer-motion'
+import Picture from '../ui/picture'
 
 export default function GalleryMasonry({ images }: { images: Gallery[] }) {
   const [selectedImg, setSelectedImg] = useState<string | null>(null)
@@ -48,8 +49,8 @@ export default function GalleryMasonry({ images }: { images: Gallery[] }) {
 
       <div className="grid grid-cols-3 gap-1.5">
         {images.map((image, imageIndex) => (
-          <img
-            onClick={() => handleImageClick(image.src, imageIndex)}
+          <Picture
+            onImageClick={() => handleImageClick(image.src, imageIndex)}
             key={image.src}
             src={image.src}
             alt={`갤러리의 ${imageIndex + 1}번째 웨딩 사진`}
@@ -90,7 +91,7 @@ export default function GalleryMasonry({ images }: { images: Gallery[] }) {
             }
           }}
         >
-          <img
+          <Picture
             src={selectedImg as string}
             alt="갤러리에서 선택한 이미지가 fullscreen으로 화면에 나옵니다."
             className="h-[100vh] w-full object-contain"

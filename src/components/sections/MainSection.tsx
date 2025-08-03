@@ -1,5 +1,6 @@
 import { Data } from '@/models/model'
 import dayjs from 'dayjs'
+import Picture from '../ui/picture'
 
 export default function MainSection({
   meta,
@@ -31,7 +32,7 @@ export default function MainSection({
         </p>
       </div>
       <div className="my-15">
-        <img
+        <Picture
           src={images.main}
           alt="메인 이미지"
           className="rounded-2xl w-[425px] h-[585px] object-cover object-bottom"
