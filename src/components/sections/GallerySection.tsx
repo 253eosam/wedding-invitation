@@ -76,7 +76,8 @@ export default function GalleryMasonry({ images }: { images: Gallery[] }) {
         <FaArrowLeft
           color="white"
           size={28}
-          className="absolute top-1/2 -translate-y-1/2 left-2"
+          className="absolute top-1/2 -translate-y-1/2 left-2
+          cursor-pointer"
           onClick={handlePrevImage}
           style={{
             filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.4))',
@@ -85,12 +86,16 @@ export default function GalleryMasonry({ images }: { images: Gallery[] }) {
         <FaArrowRight
           color="white"
           size={28}
-          className="absolute top-1/2 -translate-y-1/2 right-2"
+          className="absolute top-1/2 -translate-y-1/2 right-2
+          cursor-pointer"
           onClick={handleNextImage}
           style={{
             filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.4))',
           }}
         />
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-shadow-lg text-white">
+          {selectedIndex + 1} / {images.length}
+        </div>
         <motion.div
           key={selectedImg}
           initial={{ opacity: 0 }}
