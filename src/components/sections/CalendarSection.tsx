@@ -6,6 +6,8 @@ import classNames from 'classnames'
 import { useEffect, useState } from 'react'
 import { WeddingDate } from '@/models/model'
 import { Section } from '../Section'
+import { downloadAndOpenICS, generateICS } from '@/utils/generateICS'
+import { data } from '@/models'
 
 export default function CalendarSection({
   year,
@@ -32,6 +34,33 @@ export default function CalendarSection({
   const diffMinutes = marryDate.diff(now, 'minute') % 60
   const diffSeconds = marryDate.diff(now, 'second') % 60
 
+  const handleAddToCalendar = () => {
+    const formatKST = (date: Date) => {
+      const pad = (n: number) => String(n).padStart(2, '0')
+      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`
+    }
+    // weddingDate → Date 객체 (KST)
+    const startDateKST = new Date(
+      year,
+      month - 1,
+      day,
+      time.amPm === 'pm' && time.hour !== 12 ? time.hour + 12 : time.hour,
+      time.minute
+    )
+
+    const endDateKST = new Date(startDateKST.getTime() + 60 * 60 * 1000) // 1시간 후
+
+    const url = generateICS({
+      title: data.meta.title,
+      description: data.meta.description,
+      location: '대전 BMK 웨딩컨벤션 아스틴홀',
+      startDate: formatKST(startDateKST),
+      endDate: formatKST(endDateKST),
+    })
+
+    downloadAndOpenICS(url, 'wedding.ics')
+  }
+
   return (
     <Section.Container className="text-center flex flex-col gap-y-9">
       <Section.Title kor="날짜" eng="CALENDAR" />
@@ -57,6 +86,12 @@ export default function CalendarSection({
       <p className="mt-4 font-bold text-[#666666]">
         {groom}, {bride}의 결혼식이{' '}
         <strong className="text-highlight">{diff}</strong>일 남았습니다.
+      </p>
+      <p
+        className="font-bold text-[#666666] underline underline-offset-5  cursor-pointer hover:text-highlight"
+        onClick={handleAddToCalendar}
+      >
+        캘린더에 등록하기
       </p>
     </Section.Container>
   )
