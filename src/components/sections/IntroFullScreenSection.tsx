@@ -10,7 +10,7 @@ export default function IntroFullScreenSection({
 }: {
   onClick: () => void
 }) {
-  const fullText = 'Wedding day\n\n주희 ❤️ 성준\n\n초대합니다'
+  const fullText = 'Wedding day\n\n주희 ♡ 성준'
   const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function IntroFullScreenSection({
 
     const timeout = setTimeout(() => {
       setCurrentIndex((prev) => prev + 1)
-    }, 150)
+    }, 130)
 
     return () => clearTimeout(timeout)
   }, [currentIndex, fullText])
@@ -30,7 +30,7 @@ export default function IntroFullScreenSection({
       className="absolute h-dvh w-full z-50 cursor-pointer"
       onClick={onClick}
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white text-shadow-md text-4xl font-semibold leading-tight whitespace-pre-wrap break-words max-w-[90%] flex flex-col items-center font-gowun ">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white text-shadow-md text-4xl font-normal leading-tight whitespace-pre-wrap break-words max-w-[90%] flex flex-col items-center font-crimson ">
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
