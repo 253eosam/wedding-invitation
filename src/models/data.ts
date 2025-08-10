@@ -114,7 +114,7 @@ export default {
       position: 'object-bottom',
     },
     {
-      src: '/images/YJH_0459.jpg',
+      src: '/images/YJH_0360.jpg',
       position: 'object-center',
     },
     {
@@ -134,7 +134,7 @@ export default {
       position: 'object-bottom',
     },
     {
-      src: '/images/YJH_0360.jpg',
+      src: '/images/YJH_0459.jpg',
       position: 'object-center',
     },
   ].map(({ position, src }) => ({
