@@ -4,23 +4,26 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import data from '@/models/data'
 import Picture from '../ui/picture'
+import classNames from 'classnames'
 
 export default function IntroFullScreenSection({
   onClick,
 }: {
   onClick: () => void
 }) {
-  const fullText = 'Wedding day\n\n주희 ♡ 성준'
+  const fullText = 'Wedding day'
+  const nextText = '주희 ♡ 성준'
   const [currentIndex, setCurrentIndex] = useState(0)
-
+  const [displayRightIcon, setDisplayRightIcon] = useState(false)
   useEffect(() => {
     if (currentIndex >= fullText.length) {
+      setDisplayRightIcon(true)
       return
     }
 
     const timeout = setTimeout(() => {
       setCurrentIndex((prev) => prev + 1)
-    }, 130)
+    }, 180)
 
     return () => clearTimeout(timeout)
   }, [currentIndex, fullText])
@@ -30,7 +33,7 @@ export default function IntroFullScreenSection({
       className="absolute h-dvh w-full z-50 cursor-pointer"
       onClick={onClick}
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white text-shadow-md text-4xl font-normal leading-tight whitespace-pre-wrap break-words max-w-[90%] flex flex-col items-center font-crimson ">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white text-shadow-lg text-4xl font-m leading-tight whitespace-pre-wrap break-words max-w-[90%] flex flex-col items-center font-crimson ">
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -38,6 +41,17 @@ export default function IntroFullScreenSection({
         >
           {fullText.slice(0, currentIndex)}
         </motion.span>
+
+        {
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: displayRightIcon ? 1 : 0 }}
+            transition={{ duration: 3 }}
+            className={classNames('mt-4 text-2xl font-gowun')}
+          >
+            {nextText}
+          </motion.span>
+        }
       </div>
       <Picture
         src={data.images.intro}
