@@ -4,6 +4,8 @@ import classNames from 'classnames'
 import { Gallery } from '@/models/model'
 import { motion } from 'framer-motion'
 import Picture from '../ui/picture'
+import { FaArrowLeft } from 'react-icons/fa'
+import { FaArrowRight } from 'react-icons/fa'
 
 export default function GalleryMasonry({ images }: { images: Gallery[] }) {
   const [selectedImg, setSelectedImg] = useState<string | null>(null)
@@ -71,6 +73,24 @@ export default function GalleryMasonry({ images }: { images: Gallery[] }) {
           setSelectedIndex(-1)
         }}
       >
+        <FaArrowLeft
+          color="white"
+          size={28}
+          className="absolute top-1/2 -translate-y-1/2 left-2"
+          onClick={handlePrevImage}
+          style={{
+            filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.4))',
+          }}
+        />
+        <FaArrowRight
+          color="white"
+          size={28}
+          className="absolute top-1/2 -translate-y-1/2 right-2"
+          onClick={handleNextImage}
+          style={{
+            filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.4))',
+          }}
+        />
         <motion.div
           key={selectedImg}
           initial={{ opacity: 0 }}
