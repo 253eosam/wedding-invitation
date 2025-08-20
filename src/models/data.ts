@@ -32,7 +32,7 @@ export default {
       relation: 'self',
       phone: '010-****-****',
       account: {
-        bank: '신한은행',
+        bank: '신한',
         accountNumber: '***-***-******',
         bankIdentity: '예금주',
       },
@@ -43,7 +43,7 @@ export default {
       relation: 'father',
       phone: '010-****-****',
       account: {
-        bank: 'IM뱅크',
+        bank: 'IM뱅크(대구)',
         accountNumber: '***-**-******-***',
         bankIdentity: '예금주',
       },
@@ -54,7 +54,7 @@ export default {
       relation: 'mother',
       phone: '010-****-****',
       account: {
-        bank: 'IM뱅크',
+        bank: 'IM뱅크(대구)',
         accountNumber: '***-**-******',
         bankIdentity: '예금주',
       },
@@ -65,7 +65,7 @@ export default {
       relation: 'self',
       phone: '010-****-****',
       account: {
-        bank: '우리은행',
+        bank: '우리',
         accountNumber: '****-***-******',
         bankIdentity: '예금주',
       },
