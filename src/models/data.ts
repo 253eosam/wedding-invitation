@@ -32,7 +32,7 @@ export default {
       relation: 'self',
       phone: '01082623777',
       account: {
-        bank: '신한은행',
+        bank: '신한',
         accountNumber: '110-414-698540',
         bankIdentity: '이성준',
       },
@@ -43,7 +43,7 @@ export default {
       relation: 'father',
       phone: '010-7252-9110',
       account: {
-        bank: 'IM뱅크',
+        bank: 'IM뱅크(대구)',
         accountNumber: '173-07-105277-001',
         bankIdentity: '번창기업(이호상)',
       },
@@ -54,7 +54,7 @@ export default {
       relation: 'mother',
       phone: '010-9882-9110',
       account: {
-        bank: 'IM뱅크',
+        bank: 'IM뱅크(대구)',
         accountNumber: '097-08-004623',
         bankIdentity: '권정자',
       },
@@ -65,7 +65,7 @@ export default {
       relation: 'self',
       phone: '010-6412-3317',
       account: {
-        bank: '우리은행',
+        bank: '우리',
         accountNumber: '1002-160-599486',
         bankIdentity: '김주희',
       },
