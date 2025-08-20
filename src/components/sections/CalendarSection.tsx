@@ -87,12 +87,6 @@ export default function CalendarSection({
         {groom}, {bride}의 결혼식이{' '}
         <strong className="text-highlight">{diff}</strong>일 남았습니다.
       </p>
-      <p
-        className="font-bold text-[#666666] underline underline-offset-5  cursor-pointer hover:text-highlight"
-        onClick={handleAddToCalendar}
-      >
-        캘린더에 등록하기
-      </p>
     </Section.Container>
   )
 }
