@@ -33,7 +33,7 @@ export default function MapSection({
 
       const map = new naver.maps.Map(mapRef.current, {
         center: new naver.maps.LatLng(latitude, longitude),
-        zoom: 15,
+        zoom: 16,
       })
 
       new naver.maps.Marker({
@@ -65,6 +65,32 @@ export default function MapSection({
           네이버지도
         </Section.Button>
       </Link>
+      <div className="text-center flex flex-col gap-6 mx-4 break-keep mt-2">
+        <div className="flex flex-col gap-2">
+          <p>버스이용시</p>
+          <Section.Typography>
+            119번, 201번, 202번, 311번, 314번, 513번, 608번, 613번, 618번,
+            200번, 612번, 급행1, 2002, 33번
+          </Section.Typography>
+          <Section.Typography>* 서대전 내거리에서 하차</Section.Typography>
+        </div>
+        <div>
+          <p>지하철이용시</p>
+          <Section.Typography>
+            서대전네거리역 2번출구에서 도보10분 좌측
+          </Section.Typography>
+        </div>
+        <div>
+          <p>택시&자가용이용시</p>
+          <Section.Typography>
+            네비게이션에 BMK웨딩홀 입력후 주차장이용
+          </Section.Typography>
+        </div>
+        <div>
+          <p>버스대절 (대구)</p>
+          <Section.Typography>준비중입니다. 🙇‍♂️</Section.Typography>
+        </div>
+      </div>
     </Section.Container>
   )
 }
