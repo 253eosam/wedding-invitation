@@ -15,6 +15,7 @@ export default function IntroFullScreenSection({
   const nextText = '주희 ♡ 성준'
   const [currentIndex, setCurrentIndex] = useState(0)
   const [displayRightIcon, setDisplayRightIcon] = useState(false)
+
   useEffect(() => {
     if (currentIndex >= fullText.length) {
       setDisplayRightIcon(true)
@@ -27,6 +28,14 @@ export default function IntroFullScreenSection({
 
     return () => clearTimeout(timeout)
   }, [currentIndex, fullText])
+
+  useEffect(() => {
+    if (displayRightIcon) {
+      setTimeout(() => {
+        onClick()
+      }, 8_000)
+    }
+  }, [displayRightIcon])
 
   return (
     <div
