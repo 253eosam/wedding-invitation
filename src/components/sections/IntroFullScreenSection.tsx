@@ -33,7 +33,7 @@ export default function IntroFullScreenSection({
     if (displayRightIcon) {
       setTimeout(() => {
         onClick()
-      }, 3_000)
+      }, 2_500)
     }
   }, [displayRightIcon])
 

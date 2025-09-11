@@ -15,7 +15,9 @@ import { AnimatePresence, motion } from 'framer-motion'
 
 export default function Home() {
   const { weddingDate, families, gallery, map, images, bgm } = data
-  const { toggle, isPlaying } = useBGMPlayer(bgm)
+  const [showIntro, setShowIntro] = useState(true)
+  const [mounted, setMounted] = useState(false)
+  const { toggle, isPlaying, start } = useBGMPlayer(bgm, false)
 
   const groom = families.find(
     (person) => person.gender === 'groom' && person.relation === 'self'
@@ -26,8 +28,6 @@ export default function Home() {
   const groomFamily = families.filter((person) => person.gender === 'groom')
   const brideFamily = families.filter((person) => person.gender === 'bride')
 
-  const [showIntro, setShowIntro] = useState(true)
-
   const handleClick = () => {
     setShowIntro(false)
   }
@@ -35,12 +35,22 @@ export default function Home() {
   useEffect(() => {
     if (showIntro) {
       document.body.classList.add('overflow-hidden')
-    } else document.body.classList.remove('overflow-hidden')
-  }, [showIntro])
+    } else {
+      document.body.classList.remove('overflow-hidden')
+      setTimeout(() => {
+        start()
+      }, 500)
+    }
+  }, [showIntro, start])
 
   useEffect(() => {
+    setMounted(true)
     window.scrollTo(0, 0)
   }, [])
+
+  if (!mounted) {
+    return null
+  }
 
   return (
     <>
