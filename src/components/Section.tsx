@@ -107,27 +107,26 @@ const SectionDialog = ({
       role="dialog"
       aria-modal="true"
       aria-label="Section Dialog"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose()
+        }
+      }}
     >
-      <motion.div
-        drag="y"
-        dragConstraints={{ top: 0, bottom: 0 }}
-        onDragEnd={(e, info) => {
-          if (info.offset.y > 100) {
-            onClose()
-          }
-        }}
-        dragElastic={0.2}
-        className="w-full h-full"
-      >
+      <div className="w-full h-full">
         <button
-          className="absolute top-4 right-4 text-[#ccc] w-11 h-11 text-2xl"
-          onClick={onClose}
+          className="absolute top-4 right-4 z-50 w-11 h-11 text-[#ccc] text-2xl  bg-opacity-30 rounded-full cursor-pointer"
+          tabIndex={0}
           aria-label="닫기"
+          onClick={(e) => {
+            e.stopPropagation()
+            onClose()
+          }}
         >
           ✕
         </button>
         {children}
-      </motion.div>
+      </div>
     </motion.div>
   )
 }
