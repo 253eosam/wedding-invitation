@@ -88,7 +88,13 @@ export default function MapSection({
         </div>
         <div>
           <p>버스대절 (대구)</p>
-          <Section.Typography>준비중입니다. 🙇‍♂️</Section.Typography>
+          <Section.Typography>
+            • 칠곡어울아트 9시30분
+            <br />
+            • 성서홈플러스 5번출구 10시
+            <br />
+            &nbsp;&nbsp;(지하철2호선 용산역5번출구 성서홈플러스방향)
+          </Section.Typography>
         </div>
       </div>
     </Section.Container>
