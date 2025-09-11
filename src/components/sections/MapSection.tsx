@@ -1,8 +1,9 @@
 import { MapInfo } from '@/models/model'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Section } from '../Section'
 import Link from 'next/link'
 import { SiNaver } from 'react-icons/si'
+import { MdLock, MdLockOpen } from 'react-icons/md'
 
 const NAVER_CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID
 
@@ -25,6 +26,7 @@ export default function MapSection({
 }: MapInfo) {
   const { latitude, longitude } = position
   const mapRef = useRef<HTMLDivElement>(null)
+  const [isMapInteractive, setIsMapInteractive] = useState(false)
 
   useEffect(() => {
     loadNaverScript().then(() => {
@@ -34,6 +36,11 @@ export default function MapSection({
       const map = new naver.maps.Map(mapRef.current, {
         center: new naver.maps.LatLng(latitude, longitude),
         zoom: 16,
+        draggable: isMapInteractive,
+        scrollWheel: isMapInteractive,
+        keyboardShortcuts: isMapInteractive,
+        disableDoubleClickZoom: !isMapInteractive,
+        disableTwoFingerTapZoom: !isMapInteractive,
       })
 
       new naver.maps.Marker({
@@ -42,7 +49,7 @@ export default function MapSection({
         clickable: false,
       })
     })
-  }, [latitude, longitude])
+  }, [latitude, longitude, isMapInteractive])
 
   return (
     <Section.Container className="flex flex-col gap-y-6">
@@ -53,7 +60,23 @@ export default function MapSection({
         </Section.Typography>
         <Section.Typography>{address}</Section.Typography>
       </div>
-      <div ref={mapRef} style={{ width: '100%', height: '400px' }} />
+      <div className="relative">
+        <div ref={mapRef} style={{ width: '100%', height: '400px' }} />
+        {!isMapInteractive && (
+          <div className="absolute inset-0 bg-transparent pointer-events-none" />
+        )}
+        <button
+          onClick={() => setIsMapInteractive(!isMapInteractive)}
+          className="absolute top-2 right-2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-50 transition-colors z-10"
+          aria-label={isMapInteractive ? "지도 잠금" : "지도 잠금 해제"}
+        >
+          {isMapInteractive ? (
+            <MdLockOpen className="w-5 h-5 text-gray-700" />
+          ) : (
+            <MdLock className="w-5 h-5 text-gray-700" />
+          )}
+        </button>
+      </div>
       <Link
         href={link}
         target="_blank"
