@@ -38,13 +38,13 @@ export default function Home() {
       document.body.style.position = 'fixed'
       document.body.style.width = '100%'
       document.body.style.height = '100%'
-      
+
       const preventScroll = (e: TouchEvent) => {
         e.preventDefault()
       }
-      
+
       document.addEventListener('touchmove', preventScroll, { passive: false })
-      
+
       return () => {
         document.removeEventListener('touchmove', preventScroll)
       }
@@ -53,7 +53,7 @@ export default function Home() {
       document.body.style.position = ''
       document.body.style.width = ''
       document.body.style.height = ''
-      
+
       setTimeout(() => {
         start()
       }, 500)
