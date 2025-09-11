@@ -6,8 +6,6 @@ import classNames from 'classnames'
 import { useEffect, useState } from 'react'
 import { WeddingDate } from '@/models/model'
 import { Section } from '../Section'
-import { downloadAndOpenICS, generateICS } from '@/utils/generateICS'
-import { data } from '@/models'
 
 export default function CalendarSection({
   year,
@@ -33,33 +31,6 @@ export default function CalendarSection({
   const diffHours = marryDate.diff(now, 'hour') % 24
   const diffMinutes = marryDate.diff(now, 'minute') % 60
   const diffSeconds = marryDate.diff(now, 'second') % 60
-
-  const handleAddToCalendar = () => {
-    const formatKST = (date: Date) => {
-      const pad = (n: number) => String(n).padStart(2, '0')
-      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`
-    }
-    // weddingDate → Date 객체 (KST)
-    const startDateKST = new Date(
-      year,
-      month - 1,
-      day,
-      time.amPm === 'pm' && time.hour !== 12 ? time.hour + 12 : time.hour,
-      time.minute
-    )
-
-    const endDateKST = new Date(startDateKST.getTime() + 60 * 60 * 1000) // 1시간 후
-
-    const url = generateICS({
-      title: data.meta.title,
-      description: data.meta.description,
-      location: '대전 BMK 웨딩컨벤션 아스틴홀',
-      startDate: formatKST(startDateKST),
-      endDate: formatKST(endDateKST),
-    })
-
-    downloadAndOpenICS(url, 'wedding.ics')
-  }
 
   return (
     <Section.Container className="text-center flex flex-col gap-y-9">
