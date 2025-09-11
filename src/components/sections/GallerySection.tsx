@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Section } from '../Section'
 import classNames from 'classnames'
 import { Gallery } from '@/models/model'
-import { motion } from 'framer-motion'
 import Picture from '../ui/picture'
-import { FaArrowLeft } from 'react-icons/fa'
-import { FaArrowRight } from 'react-icons/fa'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Keyboard } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 export default function GalleryMasonry({ images }: { images: Gallery[] }) {
   const [selectedImg, setSelectedImg] = useState<string | null>(null)
@@ -16,29 +18,16 @@ export default function GalleryMasonry({ images }: { images: Gallery[] }) {
     setSelectedIndex(index)
   }
 
-  const handlePrevImage = () => {
-    const newIndex = selectedIndex - 1
-    if (0 <= newIndex) {
-      setSelectedIndex(newIndex)
-      setSelectedImg(images[newIndex].src)
-    } else {
-      const last = images.length - 1
-      setSelectedIndex(last)
-      setSelectedImg(images[last].src)
-    }
+  const handleClose = () => {
+    setSelectedImg(null)
+    setSelectedIndex(-1)
   }
 
-  const handleNextImage = () => {
-    const newIndex = selectedIndex + 1
-    if (newIndex <= images.length - 1) {
-      setSelectedIndex(newIndex)
-      setSelectedImg(images[newIndex].src)
-    } else {
-      const first = 0
-      setSelectedIndex(first)
-      setSelectedImg(images[first].src)
+  useEffect(() => {
+    if (!selectedImg) {
+      setSelectedIndex(-1)
     }
-  }
+  }, [selectedImg])
 
   return (
     <Section.Container fadeUp className="px-2">
@@ -66,62 +55,78 @@ export default function GalleryMasonry({ images }: { images: Gallery[] }) {
         ))}
       </div>
 
-      <Section.Dialog
-        isOpen={Boolean(selectedImg)}
-        onClose={() => {
-          setSelectedImg(null)
-          setSelectedIndex(-1)
-        }}
-      >
-        <FaArrowLeft
-          color="white"
-          size={28}
-          className="absolute top-1/2 -translate-y-1/2 left-2
-          cursor-pointer"
-          onClick={handlePrevImage}
-          style={{
-            filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.4))',
-          }}
-        />
-        <FaArrowRight
-          color="white"
-          size={28}
-          className="absolute top-1/2 -translate-y-1/2 right-2
-          cursor-pointer"
-          onClick={handleNextImage}
-          style={{
-            filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.4))',
-          }}
-        />
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-shadow-lg text-white">
-          {selectedIndex + 1} / {images.length}
-        </div>
-        <motion.div
-          key={selectedImg}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{
-            x: { type: 'spring', stiffness: 300, damping: 30 },
-            opacity: { duration: 0.2 },
-          }}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={false}
-          onDragEnd={(e, info) => {
-            if (info.offset.x < -100) {
-              handleNextImage()
-            } else if (info.offset.x > 100) {
-              handlePrevImage()
-            }
-          }}
+      <Section.Dialog isOpen={Boolean(selectedImg)} onClose={handleClose}>
+        <div
+          className="w-full h-full z-10"
+          onClick={(e) => e.stopPropagation()}
+          style={
+            {
+              '--swiper-pagination-fraction-color': 'white',
+            } as React.CSSProperties
+          }
         >
-          <Picture
-            src={selectedImg as string}
-            alt="갤러리에서 선택한 이미지가 fullscreen으로 화면에 나옵니다."
-            className="h-[100vh] w-full object-contain"
-          />
-        </motion.div>
+          <Swiper
+            modules={[Navigation, Pagination, Keyboard]}
+            navigation={true}
+            pagination={{
+              type: 'fraction',
+            }}
+            keyboard={{
+              enabled: true,
+            }}
+            loop={true}
+            initialSlide={selectedIndex}
+            slidesPerView={1}
+            slidesPerGroup={1}
+            speed={300}
+            resistance={false}
+            resistanceRatio={0}
+            onDestroy={handleClose}
+            onSlideChange={(swiper) => {
+              if (swiper.destroyed) return
+              setSelectedIndex(swiper.realIndex)
+              setSelectedImg(images[swiper.realIndex].src)
+            }}
+            allowTouchMove={true}
+            touchStartPreventDefault={false}
+            touchMoveStopPropagation={true}
+            simulateTouch={true}
+            touchRatio={1}
+            touchAngle={45}
+            threshold={10}
+            longSwipes={false}
+            shortSwipes={true}
+            longSwipesMs={300}
+            className="w-full h-full gallery-swiper"
+            style={
+              {
+                '--swiper-navigation-color': '#fff',
+                '--swiper-pagination-color': '#fff',
+                '--swiper-navigation-size': '28px',
+                '--swiper-pagination-fraction-color': '#fff',
+              } as React.CSSProperties
+            }
+          >
+            {images.map((image, index) => (
+              <SwiperSlide
+                key={image.src}
+                className="flex items-center justify-center"
+              >
+                <Picture
+                  src={image.src}
+                  alt={`갤러리 ${index + 1}번째 이미지`}
+                  className="h-[100vh] w-full object-contain"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <style jsx global>{`
+            .gallery-swiper .swiper-pagination-fraction {
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+              font-weight: 600 !important;
+            }
+          `}</style>
+        </div>
       </Section.Dialog>
     </Section.Container>
   )

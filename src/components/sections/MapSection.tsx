@@ -68,7 +68,7 @@ export default function MapSection({
         <button
           onClick={() => setIsMapInteractive(!isMapInteractive)}
           className="absolute top-2 right-2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-50 transition-colors z-10"
-          aria-label={isMapInteractive ? "지도 잠금" : "지도 잠금 해제"}
+          aria-label={isMapInteractive ? '지도 잠금' : '지도 잠금 해제'}
         >
           {isMapInteractive ? (
             <MdLockOpen className="w-5 h-5 text-gray-700" />

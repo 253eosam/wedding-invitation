@@ -32,7 +32,10 @@ export default function Picture({
         width={width}
         height={height}
         style={style}
-        onClick={onImageClick}
+        onClick={(e) => {
+          e.stopPropagation()
+          onImageClick?.()
+        }}
       />
     </picture>
   )
