@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useEffect, useState, useCallback } from 'react'
-import { Howl } from 'howler'
+import { Howl, Howler } from 'howler'
 
 export function useBGMPlayer(src: string, autoPlay: boolean = false) {
   const soundRef = useRef<Howl | null>(null)
@@ -17,6 +17,10 @@ export function useBGMPlayer(src: string, autoPlay: boolean = false) {
         onplay: () => setIsPlaying(true),
         onend: () => setIsPlaying(false),
         onstop: () => setIsPlaying(false),
+        onplayerror: () => {
+          // Howler.js 내장 unlock 메커니즘 사용
+          Howler.autoUnlock = true
+        },
       })
     }
 
@@ -38,10 +42,15 @@ export function useBGMPlayer(src: string, autoPlay: boolean = false) {
   const toggle = () => {
     if (isPlaying) {
       stop()
-    } else start()
+    } else {
+      start()
+    }
   }
 
   useEffect(() => {
+    // Howler.js autoUnlock 활성화 - 사용자 제스처 후 자동으로 AudioContext unlock
+    Howler.autoUnlock = true
+
     if (autoPlay) {
       start()
     }
