@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState, useCallback } from 'react'
 import { Howl } from 'howler'
 
-export function useBGMPlayer(src: string) {
+export function useBGMPlayer(src: string, autoPlay: boolean = false) {
   const soundRef = useRef<Howl | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
 
@@ -42,18 +42,15 @@ export function useBGMPlayer(src: string) {
   }
 
   useEffect(() => {
-    const handleClick = () => {
+    if (autoPlay) {
       start()
-      window.removeEventListener('click', handleClick)
     }
-
-    window.addEventListener('click', handleClick)
 
     return () => {
       stop()
       soundRef.current?.unload()
     }
-  }, [start, stop])
+  }, [start, stop, autoPlay])
 
-  return { toggle, isPlaying }
+  return { toggle, isPlaying, start }
 }
