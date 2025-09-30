@@ -114,6 +114,8 @@ export default function MapSection({
           <Section.Typography>
             • 북구어울아트센터 10시
             <br />• 용산역5번출구 성서홈플러스 10시30분
+            <br />
+            <br />※ 버스대절 이용을 원하시는 분은 미리 연락 부탁드립니다.
           </Section.Typography>
         </div>
       </div>
