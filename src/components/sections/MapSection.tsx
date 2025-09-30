@@ -110,12 +110,13 @@ export default function MapSection({
           </Section.Typography>
         </div>
         <div>
-          <p>버스대절 (대구)</p>
+          <p>신랑측 버스대절 (대구 출발)</p>
           <Section.Typography>
             • 북구어울아트센터 10시
             <br />• 용산역5번출구 성서홈플러스 10시30분
             <br />
-            <br />※ 버스대절 이용을 원하시는 분은 미리 연락 부탁드립니다.
+            <br />※ 대절버스 이용하시는 분은 인원파악을 위해 신랑측으로 연락
+            부탁드립니다.
           </Section.Typography>
         </div>
       </div>
