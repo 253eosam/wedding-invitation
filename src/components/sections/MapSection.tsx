@@ -112,7 +112,7 @@ export default function MapSection({
         <div>
           <p>신랑측 버스대절 (대구 출발)</p>
           <Section.Typography>
-            • 북구 어울아트센터(대구 칠곡)
+            • 북구 어울아트센터(대구 칠곡) 10시
             <br />• 용산역5번출구 성서홈플러스 10시30분
             <br />
             <br />※ 대절버스 이용하시는 분은 인원파악을 위해 신랑측으로 연락
