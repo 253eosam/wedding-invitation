@@ -112,12 +112,15 @@ export default function MapSection({
         <div>
           <p>신랑측 버스대절 (대구 출발)</p>
           <Section.Typography>
-            • (대구 북구 칠곡) 어울아트센터 10시
+            • (대구 북구 칠곡) 북구 어울아트센터 10시
             <br />• (대구) 용산역5번출구 성서홈플러스 10시30분
             <br />
             <br />※ 대절버스 이용하시는 분은 인원파악을 위해 신랑측으로 연락
             부탁드립니다.
-            <br />※ 새천년관광(빨간색) / 차량번호: 대구70바3511
+            <br />
+            <span className="underline underline-offset-2">
+              ※ 새천년관광(빨간색) 차량번호: 대구70바3511
+            </span>
           </Section.Typography>
         </div>
       </div>
