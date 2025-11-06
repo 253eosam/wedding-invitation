@@ -119,7 +119,7 @@ export default function MapSection({
             부탁드립니다.
             <br />
             <span className="underline underline-offset-2">
-              ※ 새천년관광(빨간색) 차량번호: 대구70바3511
+              ※ 새천년관광 장병화 기사님(빨간색) 차량번호: 대구70바3511
             </span>
           </Section.Typography>
         </div>
