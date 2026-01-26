@@ -15,9 +15,16 @@ export default function CalendarSection({
   groom = '신랑',
   bride = '신부',
 }: WeddingDate & { [person in 'groom' | 'bride']?: string }) {
+  // AM/PM을 24시간 형식으로 변환
+  const hour24 =
+    time.amPm === 'pm' && time.hour < 12
+      ? time.hour + 12
+      : time.amPm === 'am' && time.hour === 12
+        ? 0
+        : time.hour
   const marryDate = dayjs(
-    `${year}/${month}/${day} ${time.hour}:${time.minute}`,
-    'YYYY/MM/DD hh:mm'
+    `${year}/${month}/${day} ${hour24}:${time.minute}`,
+    'YYYY/MM/DD HH:mm'
   )
 
   const [now, setNow] = useState(dayjs())
@@ -27,10 +34,11 @@ export default function CalendarSection({
     }, 1000)
     return () => clearInterval(interval)
   }, [])
-  const diff = marryDate.diff(now, 'day')
-  const diffHours = marryDate.diff(now, 'hour') % 24
-  const diffMinutes = marryDate.diff(now, 'minute') % 60
-  const diffSeconds = marryDate.diff(now, 'second') % 60
+  const isPast = marryDate.isBefore(now)
+  const diff = Math.abs(marryDate.diff(now, 'day'))
+  const diffHours = Math.abs(marryDate.diff(now, 'hour') % 24)
+  const diffMinutes = Math.abs(marryDate.diff(now, 'minute') % 60)
+  const diffSeconds = Math.abs(marryDate.diff(now, 'second') % 60)
 
   return (
     <Section.Container className="text-center flex flex-col gap-y-9">
@@ -55,8 +63,9 @@ export default function CalendarSection({
         <DateUnit value={diffSeconds.toString()} name="SEC" />
       </div>
       <p className="mt-4 font-bold text-[#666666]">
-        {groom}, {bride}의 결혼식이{' '}
-        <strong className="text-highlight">{diff}</strong>일 남았습니다.
+        {groom}, {bride}의 결혼식{isPast ? '이 ' : '이 '}
+        <strong className="text-highlight">{diff}</strong>일{' '}
+        {isPast ? '지났습니다.' : '남았습니다.'}
       </p>
     </Section.Container>
   )
