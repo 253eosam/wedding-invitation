@@ -5,7 +5,7 @@ import GallerySection from '@/components/sections/GallerySection'
 import CalendarSection from '@/components/sections/CalendarSection'
 import MapSection from '@/components/sections/MapSection'
 import AccountSection from '@/components/sections/AccountSection'
-import { data } from '@/models'
+import { config } from '@/models'
 import { useBGMPlayer } from '@/utils/useBGMPlayer'
 import { FaCirclePlay } from 'react-icons/fa6'
 import { FaRegPlayCircle } from 'react-icons/fa'
@@ -14,19 +14,22 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 export default function Home() {
-  const { weddingDate, families, gallery, map, images, bgm } = data
+  const {
+    weddingDate,
+    gallery,
+    map,
+    intro,
+    invitation,
+    bgm,
+    couple,
+    mainImage,
+    account,
+    charterBus,
+    meta,
+  } = config
   const [showIntro, setShowIntro] = useState(true)
   const [mounted, setMounted] = useState(false)
   const { toggle, isPlaying, start } = useBGMPlayer(bgm, false)
-
-  const groom = families.find(
-    (person) => person.gender === 'groom' && person.relation === 'self'
-  )
-  const bride = families.find(
-    (person) => person.gender === 'bride' && person.relation === 'self'
-  )
-  const groomFamily = families.filter((person) => person.gender === 'groom')
-  const brideFamily = families.filter((person) => person.gender === 'bride')
 
   const handleClick = () => {
     setShowIntro(false)
@@ -80,7 +83,7 @@ export default function Home() {
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5 }}
           >
-            <IntroFullScreenSection onClick={handleClick} />
+            <IntroFullScreenSection onClick={handleClick} intro={intro} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -91,20 +94,21 @@ export default function Home() {
         BGM 재생 {isPlaying ? <FaCirclePlay /> : <FaRegPlayCircle />}
       </div>
       <div className="flex flex-col gap-y-25 py-15">
-        <MainSection {...data} />
-        <InvitationSection
-          images={images}
-          groomFamily={groomFamily}
-          brideFamily={brideFamily}
+        <MainSection
+          meta={meta}
+          weddingDate={weddingDate}
+          couple={couple}
+          mainImage={mainImage}
         />
+        <InvitationSection invitation={invitation} couple={couple} />
         <GallerySection images={gallery} />
         <CalendarSection
           {...weddingDate}
-          groom={groom?.name}
-          bride={bride?.name}
+          groom={couple.groom.name}
+          bride={couple.bride.name}
         />
-        <MapSection {...map} />
-        <AccountSection families={families} />
+        <MapSection map={map} charterBus={charterBus} />
+        <AccountSection accountConfig={account} couple={couple} />
       </div>
     </>
   )

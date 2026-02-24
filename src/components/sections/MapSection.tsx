@@ -1,14 +1,21 @@
-import { MapInfo } from '@/models/model'
 import { useEffect, useRef, useState } from 'react'
-import { Section } from '../Section'
 import Link from 'next/link'
 import { SiNaver } from 'react-icons/si'
 import { MdLock, MdLockOpen } from 'react-icons/md'
+import { Section } from '../Section'
+import TransportInfoBlock from '@/components/common/TransportInfoBlock'
+import type { CharterBusConfig, MapConfig } from '@/models/model'
 
 const NAVER_CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID
 
 const loadNaverScript = (): Promise<void> => {
   return new Promise((resolve) => {
+    const existingScript = document.getElementById('naver-map-script')
+    if (existingScript) {
+      resolve()
+      return
+    }
+
     const script = document.createElement('script')
     script.id = 'naver-map-script'
     script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${NAVER_CLIENT_ID}&callback=CALLBACK_FUNCTION"`
@@ -19,11 +26,19 @@ const loadNaverScript = (): Promise<void> => {
 }
 
 export default function MapSection({
-  position,
-  link,
-  address,
-  addressDetail,
-}: MapInfo) {
+  map,
+  charterBus,
+}: {
+  map: MapConfig
+  charterBus: CharterBusConfig | null
+}) {
+  const {
+    position,
+    naverMapLink,
+    address,
+    addressDetail,
+    directions: { bus, subway, car },
+  } = map
   const { latitude, longitude } = position
   const mapRef = useRef<HTMLDivElement>(null)
   const [isMapInteractive, setIsMapInteractive] = useState(false)
@@ -33,7 +48,7 @@ export default function MapSection({
       const { naver } = window
       if (!naver || !mapRef.current) return
 
-      const map = new naver.maps.Map(mapRef.current, {
+      const instance = new naver.maps.Map(mapRef.current, {
         center: new naver.maps.LatLng(latitude, longitude),
         zoom: 16,
         draggable: isMapInteractive,
@@ -44,7 +59,7 @@ export default function MapSection({
       })
 
       new naver.maps.Marker({
-        map,
+        map: instance,
         position: new naver.maps.LatLng(latitude, longitude),
         clickable: false,
       })
@@ -78,7 +93,7 @@ export default function MapSection({
         </button>
       </div>
       <Link
-        href={link}
+        href={naverMapLink}
         target="_blank"
         rel="noopener noreferrer"
         className="w-fit mx-auto inline-block"
@@ -89,40 +104,22 @@ export default function MapSection({
         </Section.Button>
       </Link>
       <div className="text-center flex flex-col gap-6 mx-4 break-keep mt-2">
-        <div className="flex flex-col gap-2">
-          <p>버스이용시</p>
-          <Section.Typography>
-            119번, 201번, 202번, 311번, 314번, 513번, 608번, 613번, 618번,
-            200번, 612번, 급행1, 2002, 33번
-          </Section.Typography>
-          <Section.Typography>* 서대전 내거리에서 하차</Section.Typography>
-        </div>
-        <div>
-          <p>지하철이용시</p>
-          <Section.Typography>
-            서대전네거리역 2번출구에서 도보10분 좌측
-          </Section.Typography>
-        </div>
-        <div>
-          <p>택시&자가용이용시</p>
-          <Section.Typography>
-            네비게이션에 BMK웨딩홀 입력후 주차장이용
-          </Section.Typography>
-        </div>
-        <div>
-          <p>신랑측 버스대절 (대구 출발)</p>
-          <Section.Typography>
-            • (대구 북구 칠곡) 북구 어울아트센터 10시
-            <br />• (대구) 용산역5번출구 성서홈플러스 10시30분
-            <br />
-            <br />※ 대절버스 이용하시는 분은 인원파악을 위해 신랑측으로 연락
-            부탁드립니다.
-            <br />
-            <span className="underline underline-offset-2">
-              ※ 새천년관광(빨간색), 장병화 기사님 차량번호: 대구70바3511
-            </span>
-          </Section.Typography>
-        </div>
+        <TransportInfoBlock
+          title="버스이용시"
+          description={`${bus.lines}\n* ${bus.stop}`}
+          className="flex flex-col gap-2"
+        />
+        <TransportInfoBlock title="지하철이용시" description={subway} />
+        <TransportInfoBlock title="택시&자가용이용시" description={car} />
+        {charterBus && (
+          <TransportInfoBlock
+            title={charterBus.title}
+            description={`${charterBus.stops
+              .map((stop) => `• ${stop}`)
+              .join('\n')}\n\n※ ${charterBus.notice}`}
+            emphasis={charterBus.vehicleInfo}
+          />
+        )}
       </div>
     </Section.Container>
   )

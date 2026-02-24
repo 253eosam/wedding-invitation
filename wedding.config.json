@@ -1,0 +1,164 @@
+{
+  "meta": {
+    "title": "이성준, 김주희 결혼합니다",
+    "description": "2025년 11월 9일 일요일 오후 2시\n대전 BMK 웨딩컨벤션 아스틴홀",
+    "url": "https://253eosam.github.io/wedding-invitation/",
+    "thumbnailImage": "/images/thumbnail.png"
+  },
+  "weddingDate": {
+    "year": 2025,
+    "month": 11,
+    "day": 9,
+    "time": {
+      "amPm": "pm",
+      "hour": 2,
+      "minute": 0
+    }
+  },
+  "couple": {
+    "groom": {
+      "name": "이성준",
+      "relation": "장남",
+      "phone": "01082623777",
+      "account": {
+        "bank": "신한",
+        "accountNumber": "110-414-698540",
+        "bankIdentity": "이성준"
+      },
+      "father": {
+        "name": "이호상",
+        "phone": "010-7252-9110",
+        "account": {
+          "bank": "IM뱅크(대구)",
+          "accountNumber": "173-07-105277-001",
+          "bankIdentity": "번창기업(이호상)"
+        }
+      },
+      "mother": {
+        "name": "권정자",
+        "phone": "010-9882-9110",
+        "account": {
+          "bank": "IM뱅크(대구)",
+          "accountNumber": "097-08-004623",
+          "bankIdentity": "권정자"
+        }
+      }
+    },
+    "bride": {
+      "name": "김주희",
+      "relation": "차녀",
+      "phone": "010-6412-3317",
+      "account": {
+        "bank": "우리",
+        "accountNumber": "1002-160-599486",
+        "bankIdentity": "김주희"
+      },
+      "father": {
+        "name": "김형준",
+        "phone": "010-3427-3319",
+        "account": {
+          "bank": "국민",
+          "accountNumber": "451-21-1294-665",
+          "bankIdentity": "김형준"
+        }
+      },
+      "mother": {
+        "name": "손유진",
+        "phone": "010-3264-3318",
+        "account": {
+          "bank": "농협",
+          "accountNumber": "453026-56-124036",
+          "bankIdentity": "손유진"
+        }
+      }
+    }
+  },
+  "intro": {
+    "titleText": "Wedding day",
+    "coupleText": "주희 ♡ 성준",
+    "image": "/images/intro.png"
+  },
+  "invitation": {
+    "messages": [
+      "평생 서로 귀하게 여기며\n첫 마음 그대로 존중하고\n배려하며 살겠습니다.",
+      "오로지 믿음과 사랑을 약속하는 날\n오셔서 축복해 주시면 더 없는 기쁨으로\n간직하겠습니다."
+    ],
+    "images": [
+      "/images/single-m.png",
+      "/images/single-w.png"
+    ]
+  },
+  "mainImage": "/images/main.jpg",
+  "gallery": [
+    {
+      "src": "/images/YJH_0056.jpg",
+      "position": "object-center"
+    },
+    {
+      "src": "/images/YJH_0267.jpg",
+      "position": "object-center"
+    },
+    {
+      "src": "/images/YJH_0800.jpg",
+      "position": "object-bottom"
+    },
+    {
+      "src": "/images/YJH_0360.jpg",
+      "position": "object-center"
+    },
+    {
+      "src": "/images/YJH_0590.jpg",
+      "position": "object-bottom"
+    },
+    {
+      "src": "/images/YJH_9938.jpg",
+      "position": "object-center"
+    },
+    {
+      "src": "/images/YJH_0720.jpg",
+      "position": "object-center"
+    },
+    {
+      "src": "/images/YJH_0788.jpg",
+      "position": "object-bottom"
+    },
+    {
+      "src": "/images/YJH_0459.jpg",
+      "position": "object-center"
+    }
+  ],
+  "map": {
+    "name": "BMK웨딩홀",
+    "address": "대전 중구 서문로 133",
+    "addressDetail": "BMK 웨딩홀 4층, 아스틴홀",
+    "tel": "042-334-1000",
+    "position": {
+      "latitude": 36.31983198404643,
+      "longitude": 127.40508053198738
+    },
+    "naverMapLink": "https://naver.me/58NdrkXq",
+    "directions": {
+      "bus": {
+        "lines": "119번, 201번, 202번, 311번, 314번, 513번, 608번, 613번, 618번, 200번, 612번, 급행1, 2002, 33번",
+        "stop": "서대전 내거리에서 하차"
+      },
+      "subway": "서대전네거리역 2번출구에서 도보10분 좌측",
+      "car": "네비게이션에 BMK웨딩홀 입력후 주차장이용"
+    }
+  },
+  "charterBus": {
+    "side": "groom",
+    "title": "신랑측 버스대절 (대구 출발)",
+    "stops": [
+      "(대구 북구 칠곡) 북구 어울아트센터 10시",
+      "(대구) 용산역5번출구 성서홈플러스 10시30분"
+    ],
+    "notice": "대절버스 이용하시는 분은 인원파악을 위해 신랑측으로 연락 부탁드립니다.",
+    "vehicleInfo": "새천년관광(빨간색), 장병화 기사님 차량번호: 대구70바3511"
+  },
+  "account": {
+    "title": "마음 전하실 곳",
+    "message": "참석이 어려우신 분들을 위해\n계좌번호를 기재하였습니다.\n너그러운 마음으로 양해 부탁드립니다."
+  },
+  "bgm": "/music/wedding-bgm.mp3"
+}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Section } from '../Section'
 import classNames from 'classnames'
-import { Gallery } from '@/models/model'
+import type { GalleryItem } from '@/models/model'
 import Picture from '../ui/picture'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Keyboard } from 'swiper/modules'
@@ -9,7 +9,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-export default function GalleryMasonry({ images }: { images: Gallery[] }) {
+export default function GalleryMasonry({ images }: { images: GalleryItem[] }) {
   const [selectedImg, setSelectedImg] = useState<string | null>(null)
   const [selectedIndex, setSelectedIndex] = useState<number>(0)
 
