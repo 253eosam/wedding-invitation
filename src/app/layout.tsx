@@ -1,31 +1,10 @@
 import type { Metadata, Viewport } from 'next'
-import { Crimson_Pro, Gowun_Dodum, Noto_Sans_KR } from 'next/font/google'
 import '@/app/globals.css'
-import { data } from '@/models'
-
-const CrimsonPro = Crimson_Pro({
-  variable: '--font-crimson-pro',
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-const GowunDodum = Gowun_Dodum({
-  variable: '--font-gowun-dodum',
-  subsets: ['latin'],
-  weight: '400',
-  display: 'swap',
-})
-
-const NotoSansKR = Noto_Sans_KR({
-  variable: '--font-noto-sans-kr',
-  subsets: ['latin'],
-  weight: 'variable',
-  display: 'swap',
-})
+import { config } from '@/models'
 
 export const metadata: Metadata = {
-  title: data.meta.title,
-  description: data.meta.description,
+  title: config.meta.title,
+  description: config.meta.description,
   robots: 'noindex, nofollow',
 }
 
@@ -65,20 +44,18 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
 
         {/* open graph */}
-        <meta property="og:title" content={data.meta.title} />
-        <meta property="og:description" content={data.meta.description} />
-        <meta property="og:image" content={data.meta.thumbnail} />
-        <meta property="og:url" content={data.meta.url} />
+        <meta property="og:title" content={config.meta.title} />
+        <meta property="og:description" content={config.meta.description} />
+        <meta property="og:image" content={config.meta.thumbnailImage} />
+        <meta property="og:url" content={config.meta.url} />
 
         {/* twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={data.meta.title} />
-        <meta name="twitter:description" content={data.meta.description} />
-        <meta name="twitter:image" content={data.meta.thumbnail} />
+        <meta name="twitter:title" content={config.meta.title} />
+        <meta name="twitter:description" content={config.meta.description} />
+        <meta name="twitter:image" content={config.meta.thumbnailImage} />
       </head>
-      <body
-        className={`${CrimsonPro.variable} ${GowunDodum.variable} ${NotoSansKR.variable} antialiased bg-[#efefef] overflow-hidden`}
-      >
+      <body className="antialiased bg-[#efefef] overflow-hidden">
         <main
           className="max-w-[425px] w-full bg-[#fafafa] mx-auto relative"
           role="main"

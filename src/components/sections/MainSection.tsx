@@ -1,24 +1,22 @@
-import { Data } from '@/models/model'
+import type { CoupleConfig, MetaConfig, WeddingDate } from '@/models/model'
 import dayjs from 'dayjs'
 import Picture from '../ui/picture'
 
 export default function MainSection({
   meta,
   weddingDate,
-  families,
-  images,
-}: Data) {
+  couple,
+  mainImage,
+}: {
+  meta: MetaConfig
+  weddingDate: WeddingDate
+  couple: CoupleConfig
+  mainImage: string
+}) {
   const { year, month, day, time } = weddingDate
   const marryDate = dayjs(
     `${year}/${month}/${day} ${time.hour}:${time.minute}`,
     'YYYY/MM/DD hh:mm'
-  )
-
-  const groom = families.find(
-    (p) => p.gender === 'groom' && p.relation === 'self'
-  )
-  const bride = families.find(
-    (p) => p.gender === 'bride' && p.relation === 'self'
   )
 
   return (
@@ -33,7 +31,7 @@ export default function MainSection({
       </div>
       <div className="my-15">
         <Picture
-          src={images.main}
+          src={mainImage}
           alt="메인 이미지"
           className="rounded-2xl w-[425px] h-[585px] object-cover object-bottom"
           width={425}
@@ -42,9 +40,9 @@ export default function MainSection({
       </div>
       <div className="flex flex-col items-center gap-y-5 font-gowun">
         <div className="flex flex-row gap-2.5 text-lg tracking-[1]">
-          <span>{groom?.name}</span>
+          <span>{couple.groom.name}</span>
           <span>·</span>
-          <span>{bride?.name}</span>
+          <span>{couple.bride.name}</span>
         </div>
         <p className="whitespace-pre text-center text-base text-[#544f4f] leading-7">
           {meta.description}

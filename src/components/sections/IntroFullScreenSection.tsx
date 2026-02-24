@@ -2,17 +2,19 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import data from '@/models/data'
 import Picture from '../ui/picture'
 import classNames from 'classnames'
+import type { IntroConfig } from '@/models/model'
 
 export default function IntroFullScreenSection({
   onClick,
+  intro,
 }: {
   onClick: () => void
+  intro: IntroConfig
 }) {
-  const fullText = 'Wedding day'
-  const nextText = '주희 ♡ 성준'
+  const fullText = intro.titleText
+  const nextText = intro.coupleText
   const [currentIndex, setCurrentIndex] = useState(0)
   const [displayRightIcon, setDisplayRightIcon] = useState(false)
 
@@ -31,11 +33,13 @@ export default function IntroFullScreenSection({
 
   useEffect(() => {
     if (displayRightIcon) {
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         onClick()
       }, 2_500)
+
+      return () => clearTimeout(timeout)
     }
-  }, [displayRightIcon])
+  }, [displayRightIcon, onClick])
 
   return (
     <div
@@ -63,7 +67,7 @@ export default function IntroFullScreenSection({
         }
       </div>
       <Picture
-        src={data.images.intro}
+        src={intro.image}
         alt="intro"
         style={{ objectFit: 'cover' }}
         className="h-full w-full"

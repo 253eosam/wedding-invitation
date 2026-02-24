@@ -1,1 +1,2 @@
-export { default as data } from '@/models/data'
+export { default as config } from '@/models/data'
+export type * from '@/models/model'
