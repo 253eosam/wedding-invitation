@@ -1,6 +1,26 @@
 import type { Metadata, Viewport } from 'next'
+import { Crimson_Pro, Gowun_Dodum, Noto_Sans_KR } from 'next/font/google'
 import '@/app/globals.css'
 import { config } from '@/models'
+
+const crimsonPro = Crimson_Pro({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-crimson-pro',
+})
+
+const gowunDodum = Gowun_Dodum({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-gowun-dodum',
+})
+
+const notoSansKr = Noto_Sans_KR({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-noto-sans-kr',
+})
 
 export const metadata: Metadata = {
   title: config.meta.title,
@@ -55,7 +75,9 @@ export default function RootLayout({
         <meta name="twitter:description" content={config.meta.description} />
         <meta name="twitter:image" content={config.meta.thumbnailImage} />
       </head>
-      <body className="antialiased bg-[#efefef] overflow-hidden">
+      <body
+        className={`${crimsonPro.variable} ${gowunDodum.variable} ${notoSansKr.variable} antialiased bg-[#efefef] overflow-hidden`}
+      >
         <main
           className="max-w-[425px] w-full bg-[#fafafa] mx-auto relative"
           role="main"
