@@ -28,7 +28,7 @@ const TitleEng = forwardRef<
     <p
       ref={forwardRef}
       className={classNames(
-        'font-kor text-[#f79e9e] text-xl tracking-[0.5px] h-10',
+        'font-eng text-[#f79e9e] text-xl tracking-[0.5px] h-10',
         className
       )}
       {...props}

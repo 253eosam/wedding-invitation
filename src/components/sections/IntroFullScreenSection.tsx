@@ -46,7 +46,7 @@ export default function IntroFullScreenSection({
       className="absolute h-dvh w-full z-50 cursor-pointer"
       onClick={onClick}
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white text-shadow-lg text-4xl font-m leading-tight whitespace-pre-wrap break-words max-w-[90%] flex flex-col items-center font-crimson ">
+      <div className="absolute top-1/2 left-1/2 flex max-w-[90%] -translate-x-1/2 -translate-y-1/2 flex-col items-center break-words whitespace-pre-wrap text-center text-4xl leading-tight text-white text-shadow-lg font-crimson">
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
